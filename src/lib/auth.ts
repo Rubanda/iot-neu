@@ -1,8 +1,7 @@
-import { db } from '@/lib/db'
+import { db } from '../lib/db'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import axios from 'axios'
 import { nanoid } from 'nanoid'
-import { NextAuthOptions, getServerSession } from 'next-auth'
+import { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 // import { SendWelcomeEmail } from './send-email'
 
@@ -22,6 +21,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ token, session }) {
+      console.log('[session::auth]::token', token)
       if (token) {
         session.user.id = token.id
         session.user.name = token.name
@@ -34,12 +34,15 @@ export const authOptions: NextAuthOptions = {
     },
 
     async jwt({ token, user }) {
+      console.log('[jwt::auth]::token', token)
+
+      console.log('[jwt::auth]::user', user)
       const dbUser = await db.user.findFirst({
         where: {
           email: token.email,
         },
       });
-
+      console.log('[jwt::auth]::dbUser', dbUser)
       if (!dbUser) {
         token.id = user!.id
         return token
@@ -78,5 +81,3 @@ export const authOptions: NextAuthOptions = {
     },
   },
 }
-
-export const getAuthSession = () => getServerSession(authOptions)

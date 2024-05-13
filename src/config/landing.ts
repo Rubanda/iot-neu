@@ -1,29 +1,18 @@
-import { Icons } from "@/components/icons"
-import { LandingConfig } from "types"
+import { LandingConfig } from "../types";
 
 export const landingConfig: LandingConfig = {
 
   mainNav: [
     {
-      title: "Blog",
-      href: "/blog",
+      title: "Home",
+      href: "/",
       // icon: "blog",
     },
     {
       title: "About",
       href: "/about",
       // icon: "about",
-    },
-    {
-      title: "Events",
-      href: "/event",
-      // icon: "event",
-    },
-    {
-      title: "Community",
-      href: "/community",
-      // icon: "showcase",
-    },
+    }
   ],
   sidebarNav: [
 

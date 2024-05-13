@@ -1,4 +1,5 @@
-import { Button, buttonVariants } from '@/components/ui/button'
+import Image from 'next/image'
+import { Button, buttonVariants } from '../../components/ui/button'
 
 export default function Home() {
   return (
@@ -10,7 +11,14 @@ export default function Home() {
             <p className='text-lg text-gray-600'>ai for everyone</p>
             <Button>Get Started</Button>
           </div>
-          <div className='w-64 h-64 bg-gray-200 rounded-full'></div>
+          <div className=''>
+            <Image
+              src='https://iot.neu.edu.tr/wp-content/uploads/sites/106/2023/12/11/group.jpg?ver=728e5c8cabf78172f8846fe6a83180f9'
+              alt='iot logo'
+              width={800}
+              height={800}
+            />
+          </div>
         </div>
         {/* <Join /> */}
       </main>

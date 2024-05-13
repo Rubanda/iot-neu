@@ -4,11 +4,8 @@ import * as React from "react"
 import Link from "next/link"
 import { useSelectedLayoutSegment } from "next/navigation"
 
-import { MainNavItem } from "@/types"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
-import { MobileNav } from "@/components/mobile-nav"
+import { MainNavItem } from "../types"
+import { cn } from "../lib/utils"
 import Image from "next/image"
 import { SheetDemo } from "./mobile-sheet"
 
@@ -23,7 +20,14 @@ export function MainNav({ items, children }: MainNavProps) {
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex" arial-label="main logo" scroll={false}>
-        <Icons.masatafit className="w-35 h-35 fill-black dark:fill-slate-50" />
+        <Image
+          src="/iot-logo.svg"
+          alt="health app Logo"
+          className='h-50 w-34'
+          width={300}
+          height={150}
+          priority
+        />
       </Link>
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
@@ -45,7 +49,7 @@ export function MainNav({ items, children }: MainNavProps) {
           ))}
         </nav>
       ) : null}
-       {items && (
+      {items && (
         // <MobileNav items={items} show={showMobileMenu}>{children}</MobileNav>
         <SheetDemo items={items} />
       )}

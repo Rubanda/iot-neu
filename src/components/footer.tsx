@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { motion } from 'framer-motion';
-import { ModeToggle } from "@/components/mode-toggle";
+import { ModeToggle } from "../components/mode-toggle";
 export const Footer = () => {
     return (
         <footer className="mt-4">

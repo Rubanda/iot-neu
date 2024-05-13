@@ -1,10 +1,10 @@
 import Link from "next/link"
-import { landingConfig } from '@/config/landing';
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { MainNav } from "@/components/main-nav"
-import { UserAccountNav } from "@/components/navs/use-account-nav";
-import { NavIcon } from "@/components/nav-icon";
+import { landingConfig } from '../../config/landing';
+import { cn } from "../../lib/utils"
+import { buttonVariants } from "../../components/ui/button"
+import { MainNav } from "../../components/main-nav"
+import { UserAccountNav } from "../../components/navs/use-account-nav";
+import { NavIcon } from "../../components/nav-icon";
 
 interface siteHeaderProps {
   session?: any

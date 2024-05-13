@@ -1,13 +1,13 @@
-import { SiteConfig } from "types"
+import { SiteConfig } from "../types"
 
 export const siteConfig: SiteConfig = {
-  name: "Masatafit",
+  name: "Digital Identity",
   description:
     "Masatafit is a platform for fitness enthusiasts to share their knowledge and experience with others.",
-  url: "https://masatafit.com",
+  url: "https://iot.neu.edu.tr/",
   ogImage: "",
   links: {
-    twitter: "https://twitter.com/",
+    twitter: "https://twitter.com/YakinDoguUni",
     github: "https://github.com/",
   },
 }

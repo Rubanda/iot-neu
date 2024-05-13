@@ -2,13 +2,13 @@
 import React from 'react'
 
 import { motion } from 'framer-motion'
-import { Instagram, Facebook } from '@/components/icon'
-import { ModeToggle } from "@/components/mode-toggle"
+import { Instagram, Facebook } from '../components/icon'
+import { ModeToggle } from "../components/mode-toggle"
 export const NavIcon = () => {
     return (
         <>
             <nav className='flex items-center justify-center flex-wrap'>
-                <motion.a href='https://www.instagram.com/masatafit/' target={'_blank'}
+                <motion.a href='https://www.instagram.com/YakinDoguUniversitesiOfficial/' target={'_blank'}
                     whileHover={{
                         y: -2
                     }}

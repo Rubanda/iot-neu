@@ -2,8 +2,8 @@
 
 import { useRouter, useSelectedLayoutSegment } from "next/navigation"
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs"
-import { cn } from "@/lib/utils"
-import { Separator } from "@/components/ui/separator"
+import { cn } from "../../lib/utils"
+import { Separator } from "../../components/ui/separator"
 
 interface UserTabsProps {
   userId: number

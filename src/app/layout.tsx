@@ -1,10 +1,10 @@
 import './globals.css'
 import { Inter } from 'next/font/google';
-import { Footer } from '@/components/footer';
-import { ThemeProvider } from "@/components/theme-provider"
-import { TailwindIndicator } from '@/components/tailwind-indicator'
-import { Toaster } from "@/components/ui/sonner"
-import Providers from '@/components/query-provider'
+import { Footer } from '../components/footer';
+import { ThemeProvider } from "../components/theme-provider"
+import { TailwindIndicator } from '../components/tailwind-indicator'
+import { Toaster } from "../components/ui/sonner"
+import Providers from '../components/query-provider'
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
@@ -17,10 +17,8 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-  authModal
 }: {
   children: React.ReactNode
-  authModal: React.ReactNode
 }) {
   return (
     <html lang="en"
@@ -30,8 +28,6 @@ export default function RootLayout({
 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Providers >
-            <div>{authModal}</div>
-
             {children}
           </Providers>
 

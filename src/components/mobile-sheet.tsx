@@ -1,5 +1,5 @@
 'use client'
-import { MainNavItem } from "@/types"
+import { MainNavItem } from "../types"
 import {
   Sheet,
   SheetClose,
@@ -9,10 +9,10 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "../components/ui/sheet"
 import { Icons } from "./icons"
 import Link from "next/link"
-import { cn } from "@/lib/utils"
+import { cn } from "../lib/utils"
 import { useSelectedLayoutSegment } from "next/navigation"
 
 interface MobileNavProps {

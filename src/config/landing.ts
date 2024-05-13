@@ -18,7 +18,7 @@ export const landingConfig: LandingConfig = {
 
     {
       title: "Dashboard",
-      href: "/dashboard/workspace",
+      href: "/dashboard/",
       icon: "dashboard",
     },
     {

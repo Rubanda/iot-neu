@@ -12,7 +12,7 @@ import { signIn } from "next-auth/react"
 //   description: "Login to your account",
 // }
 
-export default function LoginPage() {
+export default function Page() {
   return (
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
       <Link
@@ -29,7 +29,7 @@ export default function LoginPage() {
       </Link>
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
-        <span className="mx-auto font-semibold text-foreground tracking-tight">Masatafit</span>
+        <span className="mx-auto font-semibold text-foreground tracking-tight">NEU IOT</span>
           <h1 className="text-2xl font-semibold tracking-tight">
             Welcome back
           </h1>
@@ -39,12 +39,7 @@ export default function LoginPage() {
         </div>
         <UserAuthForm className="dark:fill-white" />
         <p className="px-8 text-center text-sm text-muted-foreground">
-          <Link
-            href="/register"
-            className="hover:text-brand underline underline-offset-4"
-          >
-            Don&apos;t have an account? Sign Up
-          </Link>
+         
         </p>
       </div>
     </div>

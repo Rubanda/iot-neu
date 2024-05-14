@@ -1,8 +1,4 @@
-"use client";
-import { useState, useRef, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { useState, useRef, useEffect } from "react";;
 import { toast } from "sonner";
 import {
   Card,
@@ -11,19 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Download } from "lucide-react";
+import { getCurrentUser } from "@/lib/session";
 
-export default function page() {
+export default async function page() {
+  const session = await getCurrentUser();
   const variants1 = {
     hidden: { filter: "blur(10px)", opacity: 0 },
     visible: { filter: "blur(0px)", opacity: 1 },
@@ -32,76 +19,10 @@ export default function page() {
     <div className="flex-1 space-y-4 p-4 pt-6">
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-3xl font-bold tracking-tight">
-          Hi Khaled, Welcome back 👋
+          Hi {session?.name?.split(' ')[0]}, Welcome back 👋
         </h2>
-        <div className="hidden md:flex items-center space-x-2">
-          <Button variant="outline">Create Event</Button>
-          <Button
-            className="shadow-none"
-            variant="outline"
-            onClick={() =>
-              toast("Event has been created", {
-                description: "Sunday, December 03, 2023 at 9:00 AM",
-                action: {
-                  label: "Undo",
-                  onClick: () => console.log("Undo"),
-                },
-              })
-            }
-          >
-            Add to Calendar
-          </Button>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="sm">
-                <Download className="mr-2 h-4 w-4" />
-                Download
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Confirm</DialogTitle>
-                <DialogDescription>
-                  What do you want to get done today?
-                </DialogDescription>
-              </DialogHeader>
-              <form id="todo-form" className="grid gap-4 py-4">
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Input
-                    id="title"
-                    name="title"
-                    placeholder="Todo title..."
-                    className="col-span-4"
-                  />
-                </div>
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Textarea
-                    id="description"
-                    name="description"
-                    placeholder="Description..."
-                    className="col-span-4"
-                  />
-                </div>
-              </form>
-              <DialogFooter>
-                <DialogTrigger asChild>
-                  <Button type="submit" size="sm" form="todo-form">
-                    Confirm
-                  </Button>
-                </DialogTrigger>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-        </div>
       </div>
-      <Tabs defaultValue="overview" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          <TabsTrigger value="reports">Reports</TabsTrigger>
-          <TabsTrigger value="summary">Summary</TabsTrigger>
-        </TabsList>
-        <TabsContent value="overview" className="space-y-4">
+
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -251,8 +172,6 @@ export default function page() {
               </CardContent>
             </Card>
           </div>
-        </TabsContent>
-      </Tabs>
     </div>
   );
 }

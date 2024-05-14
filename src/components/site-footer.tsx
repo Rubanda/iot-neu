@@ -18,15 +18,15 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             <Image
               src="/iot-logo.svg"
               alt="Logo" // Provide a descriptive alt text
-              width={50} // Adjust width as needed
+              width={10} // Adjust width as needed
               height={28} // Adjust height as needed (maintain aspect ratio)
-              className="object-cover h-7 w-5 object-left" // If you need additional styling
+              className="object-cover h-7 w-[2rem] object-left" // If you need additional styling
             />
           </div>{" "}
           <p className="text-center text-sm leading-loose md:text-left">
             Built by{" "}
             <a
-              href={siteConfig.links.twitter}
+              href={siteConfig.user.twitter}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"

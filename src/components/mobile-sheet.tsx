@@ -33,7 +33,7 @@ export function SheetDemo({ items }: MobileNavProps) {
           <SheetTitle className="flex items-start ">
             <SheetClose asChild>
               <Link href="/" >
-                <Icons.masatafitFlex className="ml-0  w-10 h-15 fill-black dark:fill-slate-50" />
+                <span className="font-bold">NEU IOT</span>
               </Link>
             </SheetClose>
           </SheetTitle>

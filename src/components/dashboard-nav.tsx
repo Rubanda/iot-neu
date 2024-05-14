@@ -32,9 +32,9 @@ export function DashboardNav({
       <nav className="grid items-start gap-2">
         {items.map((item, index) => {
           const Icon = Icons[item.icon || "arrowRight"];
-          const isHome = item.href === "/dashboard" && path === "/dashboard";
+          const isHome = item.href === "/dash" && path === "/dash";
           const isActive =
-            item.href !== "/dashboard" && path.startsWith(item.href ?? "");
+            item.href !== "/dash" && path.startsWith(item.href ?? "");
 
           const link = (
             <Link

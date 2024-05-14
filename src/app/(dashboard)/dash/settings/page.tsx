@@ -6,6 +6,7 @@ import { getCurrentUser } from "../../../../lib/session";
 import { db } from "../../../../lib/db";
 import { authOptions } from "../../../../lib/auth";
 import { ProfileForm } from "./profile-form";
+import BreadCrumb from "@/components/bread-crump";
 
 export const metadata = {
   title: "Settings",
@@ -35,15 +36,23 @@ export default async function SettingsPage() {
   return (
 
 
-    <Shell variant="sidebar">
-      <div className="flex flex-col gap-4 pr-1 xs:flex-row">
-        <PageHeader className="flex-1">
-          <PageHeaderHeading size="sm">Settings</PageHeaderHeading>
-          <PageHeaderDescription size="sm">
-            Manage your settings
-          </PageHeaderDescription>
-        </PageHeader>
-      </div>
+    <Shell variant="sidebar" className="flex-1 space-y-4  p-4 pt-6 md:p-8">
+        <div className="xxs:flex-row flex flex-col gap-4 pr-1">
+                <BreadCrumb items={[{ link: "/dash/settings", title: "Settings" }]} />
+                <PageHeader
+                    id="dashboard-department-page-header"
+                    aria-labelledby="dashboard-department-page-header-heading"
+                >
+                    <div className="flex   space-x-4">
+                        <PageHeaderHeading size="sm" className="flex-1">
+                            Settings
+                        </PageHeaderHeading>
+                    </div>
+                    <PageHeaderDescription size="sm">
+                        Manage your Settings
+                    </PageHeaderDescription>
+                </PageHeader>
+            </div>
       <div className="space-y-6">
         <div>
           <h3 className="text-lg font-medium">Profile</h3>

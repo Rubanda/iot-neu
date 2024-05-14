@@ -32,7 +32,7 @@ export function MainSidebar({ className }: SidebarProps) {
             </Link>
             {/* Navigation Links */}
             <div className="flex flex-col space-y-5 pl-4">
-              <Link href="/dashboard">
+              <Link href="/dash">
                 <span className="block text-lg font-medium text-center">
                   Dashboard
                 </span>

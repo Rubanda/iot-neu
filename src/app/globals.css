@@ -85,7 +85,7 @@
 .sidebar.collapsed .logo-image {
   transition: all 0.25s ease-in-out;
   padding-left: 20px;
-  padding-right: 1.5rem;
+  padding-right: 0.8rem;
   height: 44px;
   -o-object-position: left;
   object-position: left;

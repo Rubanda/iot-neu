@@ -18,17 +18,17 @@ export const landingConfig: LandingConfig = {
 
     {
       title: "Dashboard",
-      href: "/dashboard/",
+      href: "/dash/",
       icon: "dashboard",
     },
     {
       title: "Profile",
-      href: "/dashboard/profile",
+      href: "/dash/profile",
       icon: "user",
     },
     {
       title: "Settings",
-      href: "/dashboard/settings",
+      href: "/dash/settings",
       icon: "settings",
     },
   ],

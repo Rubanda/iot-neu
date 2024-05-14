@@ -39,13 +39,13 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href='/dashboard/workspace'>Workspace</Link>
+          <Link href='/dash/'>Workspace</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href='/dashboard/profile'>Profile</Link>
+          <Link href='/dash/profile'>Profile</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href='/dashboard/settings'>Settings</Link>
+          <Link href='/dash/settings'>Settings</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem

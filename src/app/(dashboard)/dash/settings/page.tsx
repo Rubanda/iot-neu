@@ -29,7 +29,7 @@ export default async function SettingsPage() {
   });
   const skills = userData?.Profile?.skills
   const bio = userData?.Profile?.bio
-  const social = userData?.Social?.map(social => {
+  const social = userData?.Social?.map((social: any) => {
     return { value: social.url }
   })
   return (

@@ -11,8 +11,8 @@ const inter = Inter({
 })
 
 export const metadata = {
-  title: 'Masatafit',
-  description: 'Fitness for everyone',
+  title: 'Neu IOT',
+  description: 'Digital identity for the future.',
 }
 
 export default function RootLayout({

@@ -5,8 +5,8 @@ import { MainSidebar } from "@/components/layout//main-sidebar";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Pexlle",
-  description: "Basic dashboard with Next.js and Shadcn",
+  title: "Neu IoT Dashboard",
+  description: "dashboard Neu IoT Dashboard",
 };
 
 export default function DashboardLayout({}: {}) {

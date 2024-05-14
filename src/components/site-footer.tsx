@@ -16,9 +16,9 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             }}
           >
             <Image
-              src="/pexlleh.svg"
+              src="/iot-logo.svg"
               alt="Logo" // Provide a descriptive alt text
-              width={80} // Adjust width as needed
+              width={50} // Adjust width as needed
               height={28} // Adjust height as needed (maintain aspect ratio)
               className="object-cover h-7 w-5 object-left" // If you need additional styling
             />
@@ -31,7 +31,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              Khaled
+              Mo
             </a>
             . Beautifully crafted components by{" "}
             <a
@@ -53,7 +53,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             </a>
             . The source code is available on{" "}
             <a
-              href={siteConfig.links.github}
+              href={siteConfig.user.github}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"

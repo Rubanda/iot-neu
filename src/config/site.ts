@@ -8,6 +8,12 @@ export const siteConfig = {
     twitter: "https://twitter.com/YakinDoguUni",
     github: "https://github.com/",
   },
+  user: {
+    name: "Rubanda",
+    username: "Rubanda",
+    twitter: "https://twitter.com/",
+    github: "https://github.com/Rubanda",
+  }
 }
 
 export type SiteConfig = typeof siteConfig

@@ -23,11 +23,11 @@ export const authOptions: NextAuthOptions = {
     async session({ token, session }) {
       console.log('[session::auth]::token', token)
       if (token) {
-        session.user.id = token.id
-        session.user.name = token.name
-        session.user.email = token.email
-        session.user.image = token.picture
-        session.user.username = token.username
+        session.user.id = token?.id
+        session.user.name = token?.name!
+        session.user.email = token?.email!
+        session.user.image = token?.picture!
+        session.user.username = token?.username
       }
 
       return session

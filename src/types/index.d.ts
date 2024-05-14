@@ -1,74 +1,34 @@
-import { User } from "@prisma/client"
-import type { Icon } from "lucide-react"
+import { Icons } from "@/components/icons";
 
-import { Icons } from "@/components/icons"
-
-export type NavItem = {
-  title: string
-  href: string
+export interface NavItem {
+  title: string;
+  href?: string;
+  disabled?: boolean;
+  external?: boolean;
   icon?: keyof typeof Icons;
-  disabled?: boolean
-} & (
-  | {
-      items?: false
-    }
-  | {
-      items: true
-    }
-)
-
-export type MainNavItem = NavItem
-
-export type SidebarNavItem = {
-  title: string
-  disabled?: boolean
-  external?: boolean
-  icon?: keyof typeof Icons
-} & (
-  | {
-      href: string
-      items?: never
-    }
-  | {
-      href?: string
-      items: NavLink[]
-    }
-)
-
-export type SiteConfig = {
-  name: string
-  description: string
-  url: string
-  ogImage: string
-  links: {
-    twitter: string
-    github: string
-  }
+  label?: string;
+  description?: string;
+  count?: number; // for showing numbers
+  tag?: string; // for showing tags like 'new'
 }
 
-export type DocsConfig = {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
+export interface NavItemWithChildren extends NavItem {
+  items: NavItemWithChildren[];
 }
 
-export type LandingConfig = {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
+export interface NavItemWithOptionalChildren extends NavItem {
+  items?: NavItemWithChildren[];
 }
 
-export type DashboardConfig = {
-  mainNav: MainNavItem[]
-  sidebarNav: SidebarNavItem[]
+export interface FooterItem {
+  title: string;
+  items: {
+    title: string;
+    href: string;
+    external?: boolean;
+  }[];
 }
 
-export type SubscriptionPlan = {
-  name: string
-  description: string
-  stripePriceId: string
-}
+export type MainNavItem = NavItemWithOptionalChildren;
 
-export type UserSubscriptionPlan = SubscriptionPlan &
-  Pick<User, "stripeCustomerId" | "stripeSubscriptionId"> & {
-    stripeCurrentPeriodEnd: number
-    isPro: boolean
-  }
+export type SidebarNavItem = NavItemWithChildren;

@@ -87,6 +87,40 @@ export const Icons = {
       </g>
     </svg>
   ),
+  googleDrive: ({ ...props }: LucideProps) => (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fab"
+      data-icon="google-drive"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        d="M12 6.5L6.5 12 12 17.5 17.5 12 12 6.5zM4 12l4-6h8l4 6-4 6h-8z"
+      ></path>
+    </svg>
+  ),
+  googleDocs: ({ ...props }: LucideProps) => (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fab"
+      data-icon="google-docs"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        d="M12 2L2 6v12l10 4 10-4V6L12 2zm-2 14l-4-4 4-4v3h4v2h-4v3z"
+      ></path>
+    </svg>
+  ),
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

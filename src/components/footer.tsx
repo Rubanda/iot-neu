@@ -16,8 +16,6 @@ export const Footer = () => {
                         </Link>
                     </span>
 
-                    <Link href="/privacy" className=" hover:underline">Privacy Policy</Link>
-
                     <Link href="about" className="hover:underline ">About</Link>
                 </div>
                 <div className="flex items-center gap-4">

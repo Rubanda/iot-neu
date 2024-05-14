@@ -10,7 +10,7 @@ import { Textarea } from "../../../../components/ui/textarea"
 import { Button } from "../../../../components/ui/button"
 import { cn } from "../../../../lib/utils"
 import { toast } from "sonner"
-import { User } from "@prisma/client"
+// import { User } from "@prisma/client"
 
 const profileFormSchema = z.object({
     name: z
@@ -35,7 +35,7 @@ const profileFormSchema = z.object({
       .optional(),
   })
   interface UserNameFormProps extends React.HTMLAttributes<HTMLFormElement> {
-    user: Pick<User, "id" | "name">
+    user: any //Pick<User, "id" | "name">
     profile: {
       skills: string
       bio: string

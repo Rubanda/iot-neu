@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { signIn, signOut } from "next-auth/react"
+import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
@@ -12,7 +12,6 @@ import { userAuthSchema } from "../lib/validations/auth"
 import { buttonVariants } from "../components/ui/button"
 import { toast } from "sonner"
 import { Icons } from "../components/icons"
-import { useMutation } from "@tanstack/react-query"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 

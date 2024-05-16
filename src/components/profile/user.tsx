@@ -7,12 +7,12 @@ import { Icons } from '../icons'
 import { EditUser } from './edit-user'
 
 type Props = {
-    user:any
+  user: any
 }
-const User = ({user}:Props) => {
+const User = ({ user }: Props) => {
   return (
     <>
-        <div className="flex flex-col gap-3 items-center justify-start p-3 md:flex-row">
+      <div className="w-full">
         {!user ? (
           <div className="flex flex-col md:flex-row items-center space-x-4">
             <Skeleton className="h-[150px] w-[150px] rounded-full mb-2" />
@@ -22,20 +22,44 @@ const User = ({user}:Props) => {
             </div>
           </div>
         ) :
-          (<div className='flex flex-col gap-3 items-center md:flex-row'>
-            {/* @ts-ignore */}
-            <Image src={user?.image} alt="avatar" className='rounded-full' width={150} height={150} />
-
-            <div className='flex flex-col gap-3'>
-              <h2 className="text-2xl font-bold">{user.name}</h2>
-              <p className="text-lg text-muted-foreground">{user.email}</p>
-              <EditUser />
+          (
+            <div className='flex flex-col md:flex-row gap-3'>
+              <div className='flex items-start'>
+                <Image src={user?.image} alt="avatar" className='rounded-full' width={80} height={80} />
+              </div>
+              <div className='flex flex-col gap-3' >
+                <div className='flex flex-col'>
+                  <span className='text-muted-foreground'>UserName</span>
+                  <h4 className='text-xl font-bold'>{user.username}</h4>
+                </div>
+                <div className='flex flex-col md:flex-row md:items-center  gap-3'>
+                  <div className='flex flex-col'>
+                    <span className='text-muted-foreground'>Name</span>
+                    <h4 className="text-2xl font-bold">{user.name}</h4>
+                    <div className='flex flex-col'>
+                      <span className='text-muted-foreground'>User ID</span>
+                      <p className="text-lg">{user.id}</p>
+                    </div>
+                  </div>
+                  <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col'>
+                      <span className='text-muted-foreground'>Email</span>
+                      <p className="text-lg ">{user.email}</p>
+                    </div>
+                    <div className='flex flex-col'>
+                      <span className='text-muted-foreground'>Connected accounts</span>
+                      <Icons.google className="h-4 w-4 " />
+                    </div>
+                  </div>
+                  <EditUser />
+                </div>
+              </div>
             </div>
-          </div>)
+          )
         }
       </div>
     </>
   )
 }
 
-export  {User}
+export { User }

@@ -49,7 +49,7 @@ export default async function AccountPage() {
                 <section
                     id="user-account-info"
                     aria-labelledby="user-account-info-heading"
-                    className="w-full overflow-hidden"
+                    className="w-full space-y-5 overflow-hidden"
                 >
                     <User user={user} />
                     <hr />

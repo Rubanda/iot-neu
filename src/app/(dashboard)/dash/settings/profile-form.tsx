@@ -1,16 +1,18 @@
 'use client'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useState, useTransition } from "react"
 import { useFieldArray, useForm } from "react-hook-form"
 import { z } from "zod"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../../../../components/ui/form"
 import { Input } from "../../../../components/ui/input"
 import { Textarea } from "../../../../components/ui/textarea"
 import { Button } from "../../../../components/ui/button"
-import { cn } from "../../../../lib/utils"
+import { catchError, cn } from "../../../../lib/utils"
 import { toast } from "sonner"
 import { User } from "@prisma/client"
+import { createProfile } from "@/app/_action/settings"
+import { Card } from "@/components/ui/card"
 
 const profileFormSchema = z.object({
     name: z
@@ -52,6 +54,7 @@ const profileFormSchema = z.object({
     const router = useRouter();
     const [isSaving, setIsSaving] = useState<boolean>(false)
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [isPending, startTransition] = useTransition();
     // This can come from your database or API.
     const defaultValues: Partial<ProfileFormValues> = {
       name: user?.name || "",
@@ -72,16 +75,29 @@ const profileFormSchema = z.object({
   
     function onSubmit(data: ProfileFormValues) {
       setIsSaving(true)
-      toast.success('submitted')
-      
+      const payload = JSON.stringify({
+        ...data,
+      });
+      console.log('---->',payload)
+      startTransition(async () => {
+        try {
+          await createProfile(payload);
+  
+          form.reset();
+          toast.success("Department added successfully.");
+        } catch (err) {
+          catchError(err);
+        }
+      });
       setIsSaving(false)
   
   
     };
   
     return (
+      <div className="w-full flex flex-col items-center flex-1 border-2 border-green-700">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="mx-auto w-full space-y-8  flex-1">
           <FormField
             control={form.control}
             name="name"
@@ -99,6 +115,7 @@ const profileFormSchema = z.object({
               </FormItem>
             )}
           />
+          <Card className="p-3">
           <FormField
             control={form.control}
             name="skills"
@@ -136,6 +153,8 @@ const profileFormSchema = z.object({
               </FormItem>
             )}
           />
+          <Button type="submit" className="flex items-center justify-end">{isSaving ? 'Saving....' : "Update profile"}</Button>
+          </Card>
           <div>
             {fields.map((field, index) => (
               <FormField
@@ -182,5 +201,6 @@ const profileFormSchema = z.object({
           <Button type="submit">{isLoading ? 'Loading....' : "Update profile"}</Button>
         </form>
       </Form>
+      </div>
     )
   }

@@ -4,7 +4,6 @@ import {
   unstable_cache as cache,
   unstable_noStore as noStore,
   revalidatePath,
-  revalidateTag,
 } from "next/cache"
 import { getCurrentUser } from "@/lib/session";
 import { db } from "@/lib/db";
@@ -29,4 +28,27 @@ export async function getUser() {
     }
   )()
 }
+
+/**
+ * @desc create department
+ */
+export async function createProfile(payload: string) {
+      const session = await getCurrentUser()
+      console.log('[k:session]',session)
+      const data = JSON.parse(payload)
+      delete data.name
+      delete data.urls
+      console.log('[k:data]',data)
+      const profile = await  db.profile.update({
+        where: {
+          userId: session?.id,
+        },
+        data: {
+          ...data,
+          userId: session?.id,
+        },
+      })
+    revalidatePath("/dash/settings");
+    return profile
+  }
 

@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ token, session }) {
-      console.log('[session::auth]::token', token)
+      // console.log('[session::auth]::token', token)
       if (token) {
         session.user.id = token?.id
         session.user.name = token?.name!
@@ -34,9 +34,9 @@ export const authOptions: NextAuthOptions = {
     },
 
     async jwt({ token, user }) {
-      console.log('[jwt::auth]::token', token)
+      // console.log('[jwt::auth]::token', token)
 
-      console.log('[jwt::auth]::user', user)
+      // console.log('[jwt::auth]::user', user)
       const dbUser = await db.user.findFirst({
         where: {
           email: token.email,

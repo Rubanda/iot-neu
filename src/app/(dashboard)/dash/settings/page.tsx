@@ -36,41 +36,29 @@ export default async function SettingsPage() {
   return (
 
 
-    <Shell variant="sidebar" className="flex-1 space-y-4  p-4 pt-6 md:p-8">
-        <div className="xxs:flex-row flex flex-col gap-4 pr-1">
-                <BreadCrumb items={[{ link: "/dash/settings", title: "Settings" }]} />
-                <PageHeader
-                    id="dashboard-department-page-header"
-                    aria-labelledby="dashboard-department-page-header-heading"
-                >
-                    <div className="flex   space-x-4">
-                        <PageHeaderHeading size="sm" className="flex-1">
-                            Settings
-                        </PageHeaderHeading>
-                    </div>
-                    <PageHeaderDescription size="sm">
-                        Manage your Settings
-                    </PageHeaderDescription>
-                </PageHeader>
-            </div>
-      <div className="space-y-6">
-        <div>
-          <h3 className="text-lg font-medium">Profile</h3>
-          <p className="text-sm text-muted-foreground">
-            This is how others will see you on the site.
-          </p>
-        </div>
-        <Separator />
-        <ProfileForm
-          profile={{ skills: skills || "", bio: bio || "" }}
-          social={social}
-          user={{
-            id: user?.id || "", name: user?.name || "",
+    <div className="mt-9">
+      <div className="xxs:flex-row flex flex-col gap-4 pr-1">
+        <BreadCrumb items={[{ link: "/dash/settings", title: "Settings" }]} />
 
-          }}
-        />
       </div>
+      <Shell variant="sidebar" className="max-w-5xl mx-auto flex-1 space-y-4  p-4 pt-6 md:p-8">
+        <PageHeader
+          id="dashboard-department-page-header"
+          aria-labelledby="dashboard-department-page-header-heading"
+        >
+          <div className="flex   space-x-4">
+            <PageHeaderHeading size="sm" className="flex-1">
+              Settings
+            </PageHeaderHeading>
+          </div>
+          <PageHeaderDescription size="sm">
+            Manage your Settings
+          </PageHeaderDescription>
+        </PageHeader>
+        <Separator />
+        
+      </Shell>
 
-    </Shell>
+    </div>
   )
 }

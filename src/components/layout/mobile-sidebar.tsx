@@ -26,7 +26,7 @@ export function MobileSidebar({ className }: SidebarProps) {
             <div className="px-3 py-2">
               <Link href="/">
                 <Image
-                  src="/pexlleh.svg" // Replace with your logo path
+                  src="/iot-logo.svg" // Replace with your logo path
                   alt="Logo"
                   width={150} // Adjust the size as needed
                   height={50}

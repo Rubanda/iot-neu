@@ -33,24 +33,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             >
               Mo
             </a>
-            . Beautifully crafted components by{" "}
-            <a
-              href="https://ui.shadcn.com"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Shadcn
-            </a>
-            . Hosted on{" "}
-            <a
-              href="https://vercel.com"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Vercel
-            </a>
+  
             . The source code is available on{" "}
             <a
               href={siteConfig.user.github}

@@ -25,7 +25,7 @@ export default function RootLayout({
       className={cn(inter.className, "h-full")}
     >
       <body className={cn(
-          "overflow-hidden h-full bg-background font-sans antialiased"
+          "overflow-hidden h-full bg-background "
         )}>
 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>

@@ -1,10 +1,11 @@
 import './globals.css'
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from "../components/theme-provider"
-import { TailwindIndicator } from '../components/tailwind-indicator'
-import { Toaster } from "../components/ui/sonner"
+import { ThemeProvider } from "@/components/theme-provider"
+import { TailwindIndicator } from '@/components/tailwind-indicator'
+import { Toaster } from "@/components/ui/sonner"
 import Providers from '../components/query-provider'
 import { cn } from '@/lib/utils';
+import React from "react";
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',

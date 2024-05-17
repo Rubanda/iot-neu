@@ -1,11 +1,10 @@
-import { redirect } from "next/navigation";
-import { PageHeader, PageHeaderDescription, PageHeaderHeading } from "../../../../components/page-header";
-import { Shell } from "../../../../components/shell/shell";
-import { Separator } from "../../../../components/ui/separator";
-import { getCurrentUser } from "../../../../lib/session";
-import { db } from "../../../../lib/db";
-import { authOptions } from "../../../../lib/auth";
-import { ProfileForm } from "./profile-form";
+import {redirect} from "next/navigation";
+import {PageHeader, PageHeaderDescription, PageHeaderHeading} from "@/components/page-header";
+import {Shell} from "@/components/shell/shell";
+import {Separator} from "@/components/ui/separator";
+import {getCurrentUser} from "@/lib/session";
+import {db} from "@/lib/db";
+import {authOptions} from "@/lib/auth";
 import BreadCrumb from "@/components/bread-crump";
 
 export const metadata = {
@@ -14,8 +13,7 @@ export const metadata = {
 }
 
 export default async function SettingsPage() {
-  const session = await getCurrentUser()
-  const user = session
+  const user = await getCurrentUser()
   if (!user) {
     redirect(authOptions?.pages?.signIn || "/login")
   }
@@ -28,11 +26,7 @@ export default async function SettingsPage() {
       Social: true
     },
   });
-  const skills = userData?.Profile?.skills
-  const bio = userData?.Profile?.bio
-  const social = userData?.Social?.map((social: any) => {
-    return { value: social.url }
-  })
+
   return (
 
 

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { getCurrentUser } from "@/lib/session";
 import { redirect } from "next/navigation";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Neu IOT Dashboard",

@@ -8,7 +8,7 @@ import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Tooltip,
   TooltipContent,

@@ -1,9 +1,9 @@
 import React from 'react'
-import { getCurrentUser } from '../../../../lib/session';
-import { db } from '../../../../lib/db';
-import { Shell } from '../../../../components/shell/shell';
-import { User } from '../../../../components/profile/user';
-import { Profile } from '../../../../components/profile/user-profile';
+import { getCurrentUser } from '@/lib/session';
+import { db } from '@/lib/db';
+import { Shell } from '@/components/shell/shell';
+import { User } from '@/components/profile/user';
+import { Profile } from '@/components/profile/user-profile';
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header';
 import BreadCrumb from '@/components/bread-crump';
 import Social from '@/components/profile/social';

@@ -3,8 +3,9 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-import { cn } from "../../lib/utils"
+import { cn } from "@/lib/utils"
 import { buttonVariants } from "../ui/button"
+import React from "react";
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
     items: {
@@ -28,14 +29,14 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
             {items.map((item) => (
                 <Link
                     key={item.href}
-                    href={item.disabled === true ? pathname : item.href}
+                    href={item.disabled ? pathname : item.href}
                     
                     className={cn(
                         buttonVariants({ variant: "ghost" }),
                         pathname === item.href
                             ? "bg-muted"
                             : "hover:bg-transparent",
-                        item.disabled === true ? "cursor-not-allowed text-muted-foreground" : "cursor-pointer  hover:bg-muted  hover:underline",
+                        item.disabled ? "cursor-not-allowed text-muted-foreground" : "cursor-pointer  hover:bg-muted  hover:underline",
                         "justify-start"
                     )}
                 >

@@ -1,5 +1,3 @@
-import { useState, useRef, useEffect } from "react";;
-import { toast } from "sonner";
 import {
   Card,
   CardContent,
@@ -11,10 +9,6 @@ import { getCurrentUser } from "@/lib/session";
 
 export default async function page() {
   const session = await getCurrentUser();
-  const variants1 = {
-    hidden: { filter: "blur(10px)", opacity: 0 },
-    visible: { filter: "blur(0px)", opacity: 1 },
-  };
   return (
     <div className="flex-1 space-y-4 p-4 pt-6">
       <div className="flex items-center justify-between space-y-2">

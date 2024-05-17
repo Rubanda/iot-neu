@@ -87,7 +87,7 @@ export function CenterContent() {
           className="flex items-center justify-center space-x-4 pb-8 pt-4 md:pb-10"
         >
           {" "}
-          <Link href="/login" className={cn(buttonVariants())}>
+          <Link href="/dash" className={cn(buttonVariants())}>
             Get Started
           </Link>
           <Link

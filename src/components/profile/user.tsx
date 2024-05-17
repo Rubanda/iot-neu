@@ -32,7 +32,7 @@ const User = ({ user }: Props) => {
                   <span className='text-muted-foreground'>UserName</span>
                   <h4 className='text-xl font-bold'>{user.username}</h4>
                 </div>
-                <div className='flex flex-col md:flex-row md:items-center  gap-3'>
+                <div className='flex flex-col md:flex-row md:items-center  gap-4'>
                   <div className='flex flex-col'>
                     <span className='text-muted-foreground'>Name</span>
                     <h4 className="text-2xl font-bold">{user.name}</h4>
@@ -47,8 +47,11 @@ const User = ({ user }: Props) => {
                       <p className="text-lg ">{user.email}</p>
                     </div>
                     <div className='flex flex-col'>
+                      <div className='flex items-center gap-2'>
                       <span className='text-muted-foreground'>Connected accounts</span>
-                      <Icons.google className="h-4 w-4 " />
+                      <Icons.copy className='h-4 w-4 cursor-pointer hover:text-brand' />
+                      </div>
+                      <Image src='/google.png' width={150} height={150} alt='google' className="h-4 w-4 " />
                     </div>
                   </div>
                   <EditUser />

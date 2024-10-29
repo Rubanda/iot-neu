@@ -55,7 +55,7 @@ model User {
   Post      Post[]
   Profile   Profile?
   Social    Social[]
-  Event     Event[]
+  SkinResult     SkinResult[]
   UserEvent UserEvent[]
   Email     Email?
 }
@@ -95,18 +95,12 @@ model Social {
   @@index([userId])
 }
 
-model Event {
+model SkinResult {
   id          Int      @id @default(autoincrement())
-  title       String   @db.VarChar(255)
+  name       String   @db.VarChar(255)
   image       String   @db.VarChar(255)
   location    String   @db.VarChar(255)
   description String   @db.VarChar(255)
-  content     String   @db.VarChar(255)
-  video       String   @db.VarChar(255)
-  duration    String   @db.VarChar(255)
-  published   String   @db.VarChar(255)
-  exercise    String   @db.VarChar(255)
-  date        DateTime
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   user        User[]
@@ -116,16 +110,16 @@ model Event {
 
 model UserEvent {
   userId  String
-  eventId Int
+  skinId Int
   user    User   @relation(fields: [userId], references: [id])
-  event   Event  @relation(fields: [eventId], references: [id])
+  event   SkinResult  @relation(fields: [skinId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@id([userId, eventId])
+  @@id([userId, skinId])
   @@index([userId])
-  @@index([eventId])
+  @@index([skinId])
 }
 model Email {
   id        Int      @id @default(autoincrement())

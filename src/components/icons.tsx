@@ -30,6 +30,7 @@ import {
   AlignJustify,
   ThermometerSun,
   Send,
+  Camera,
   type Icon as LucideIcon,
 } from "lucide-react"
 
@@ -69,6 +70,7 @@ export const Icons = {
   contact: Contact,
   circle:Circle,
   send:Send,
+  camera: Camera,
   google: ({ ...props }: LucideProps) => (
     <svg width="50px"
       height="50px"

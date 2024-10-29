@@ -32,7 +32,6 @@ export default async function DashboardLayout({
         <main className="flex-1 overflow-x-hidden h-full pl-1">
           {children}
           <Toaster richColors />
-          {/* <SpeedInsights /> */}
         </main>
       </div>
     </div>

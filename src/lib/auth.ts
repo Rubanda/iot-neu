@@ -30,7 +30,7 @@ export const authOptions: NextAuthOptions = {
         session.user.username = token?.username
       }
 
-      return session
+      return  session
     },
 
     async jwt({ token, user }) {
@@ -42,7 +42,6 @@ export const authOptions: NextAuthOptions = {
           email: token.email,
         },
       });
-      console.log('[jwt::auth]::dbUser', dbUser)
       if (!dbUser) {
         token.id = user!.id
         return token

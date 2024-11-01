@@ -25,12 +25,10 @@ const videoConstraints = {
 };
 let img = '/atiot.jpeg';
 const label_map = [
-    { name: 'Anger', icon: '😤' },
-    { name: 'Neutral', icon: '😶' },
-    { name: 'Fear', icon: '😨' },
-    { name: 'Happy', icon: '😅' },
-    { name: 'Sad', icon: '😢' },
-    { name: 'Surprise', icon: '😯' },
+    { name: 'Monkeypox', icon: '😤' },
+    { name: 'Chickenpox', icon: '😶' },
+    { name: 'Measles', icon: '😨' },
+    { name: 'Healthy', icon: '😅' },
 ];
 export function CheckSkinCondition() {
     const [image, setImage] = useState<any>(null);
@@ -85,17 +83,18 @@ export function CheckSkinCondition() {
         setImage(null)
     };
     const Analyze = async (event: any) => {
+        console.log('process', process.env.AI_API_URL)
         event.preventDefault();
         setLoading(true)
-        const data: any = await axios.get(`${process.env.AI_API_URL}/predict/`);
+        const data: any = await axios.get(`https://fastapi.masatafit.com/predict/`);
         if (data === 200) toast.success('predicted');
         setRes(data.data);
         setLoading(false)
     };
-
-    const final: { name: string; icon: string }[] = label_map.filter(
+    console.log('data', {res})
+    const final: { name: string; icon: string } = label_map.find(
         (lab: any) => lab.name === res?.result
-    );
+    ) ?? {name: 'Monkeypox', icon: '😤'};
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -231,12 +230,12 @@ export function CheckSkinCondition() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        {final.length > 0 ? (
+                        {final ? (
                             <>
-                                <span className='text-3xl'>{final[0]?.icon}</span>
+                                <span className='text-3xl'>{final?.icon}</span>
                                 <a href='#'>
                                     <h5 className='mb-2 text-2xl font-semibold tracking-tight text-gray-900'>
-                                        {final[0]?.name}
+                                        {final?.name}
                                     </h5>
                                 </a>
                             </>

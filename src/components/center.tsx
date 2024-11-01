@@ -36,22 +36,8 @@ export function CenterContent() {
       }}
     >
       <PageHeader className="pb-8">
-        <Link
-          style={{
-            opacity: 0,
-            transform: "translateY(-20px)",
-            animation: "fadeDown 2s ease-out 0.75s forwards",
-          }}
-          href="/login"
-          className="flex items-center text-center  justify-center bg-muted  rounded-lg  px-3 py-1 text-sm font-medium"
-        >
-          🎉 <Separator className="mx-2 h-4" orientation="vertical" />{" "}
-          <span className="sm:hidden">Neu Digital Id.</span>
-          <span className="hidden sm:inline">
-            Introducing you to neu iot.
-          </span>
-        </Link>
-        {/* <TextShimmerDemo /> */}
+
+        <TextShimmerDemo />
         <span
           style={{
             opacity: 0,
@@ -61,9 +47,9 @@ export function CenterContent() {
           className="text-center text-5xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]"
         >
           <span className="text-gradient_indigo-purple font-bold">
-            Get your {""}
+          Infection Monitoring {""}
           </span>
-          Digital id.
+          Dashboard.
         </span>
 
         <span
@@ -74,9 +60,10 @@ export function CenterContent() {
           }}
           className="mx-auto max-w-[750px] text-lg text-center text-muted-foreground"
         >
-          The Digital ID Token is a cybersecurity hero, using cryptography to safeguard online identities and transactions. 
-          This virtual badge ensures secure authentication and protects against identity theft, empowering safe digital interactions..
-        </span>
+          Welcome to the Health Testing Dashboard – your all-in-one platform for tracking and managing data 
+          on monkeypox and chickenpox cases etc... Designed for healthcare providers and researchers, this dashboard offers real-time insights, trend analysis, 
+          and secure data storage to streamline infection monitoring and support effective health responses.
+          </span>
 
         <div
           style={{
@@ -100,20 +87,21 @@ export function CenterContent() {
           </Link>
         </div>
         <div
+
           style={{
             opacity: 0,
             transform: "translateY(20px)",
             animation: "fadeUp 2s ease-out 0.55s forwards",
           }}
-          className="container mt-28 mb-32"
+          className="container flex flex-col items-center mt-28 mb-32"
         >
           {" "}
           <h2 className="text-zinc-500 text-center text-sm font-semibold uppercase">
             Powered by
           </h2>
-          <div className="text-zinc-500 my-7 flex flex-wrap items-center justify-center gap-10 gap-y-8 lg:gap-14">
-           <AnimatedBeamDemo />
-          </div>
+          <Link href="https://iot.neu.edu.tr/" className="text-zinc-500 text-center text-sm font-semibold uppercaser">
+            <span>https://iot.neu.edu.tr/</span>
+          </Link>
         </div>
         <SiteFooter />
       </PageHeader>

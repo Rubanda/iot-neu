@@ -12,32 +12,30 @@ interface ProfileProps {
   username: string | null | undefined
 }
 export const Profile = ({ profile, username }: ProfileProps) => {
+  console.log(profile)
   return (
     <div className="flex flex-col gap-3">
+      <h4 className='text-xl font-bold'>Department</h4>
 
-      <h4 className='text-xl font-bold'>Bio</h4>
-      {profile?.Profile?.bio ?
-        <p className="text-muted-foreground">
-          {profile?.Profile?.bio}
-        </p>
+      {profile?.Profile?.department ?
+        <p className='text-muted-foreground'>{profile?.Profile?.department}</p>
+
         : (
-          <p className="text-muted-foreground">
-            No bio added yet
-          </p>
+          <p className='text-muted-foreground'>No department added yet</p>
         )
-      }
-      <h4 className='text-xl font-bold'>Skill</h4>
 
-      {profile?.Profile?.skills ?
-        <p className='text-muted-foreground'>{profile?.Profile?.skills}</p>
+      }
+      <h4 className='text-xl font-bold'>Student ID</h4>
+      {profile?.Profile?.studentId ?
+        <p className='text-muted-foreground'>{profile?.Profile?.studentId}</p>
 
         : (
-          <p className='text-muted-foreground'>No skills added yet</p>
+          <p className='text-muted-foreground'>No studentId added yet</p>
         )
 
       }
       <div className="flex items-center justify-between">
-        <AddProfile />
+        {/* <AddProfile /> */}
       </div>
     </div>
   )

@@ -54,7 +54,7 @@ const User = ({ user }: Props) => {
                       <Image src='/google.png' width={150} height={150} alt='google' className="h-4 w-4 " />
                     </div>
                   </div>
-                  <EditUser />
+                  {/* <EditUser /> */}
                 </div>
               </div>
             </div>

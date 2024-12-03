@@ -1,3 +1,4 @@
+import { Papers } from "@/components/dashboard/papers";
 import { RecentResults } from "@/components/dashboard/recent-results";
 import { CheckSkinCondition } from "@/components/dashboard/scan-image";
 import {
@@ -42,8 +43,8 @@ export default async function page() {
           </CardContent>
         </Card>
       </div>
-      <div className="">
-        <Card >
+      <div className="grid gap-4 grid-cols-1 ">
+        <Card className="">
         <CardHeader>
           <CardTitle>
           Previous Test
@@ -51,6 +52,16 @@ export default async function page() {
         </CardHeader>
         <CardContent>
         <RecentResults />
+        </CardContent>
+        </Card>
+        <Card className="">
+        <CardHeader>
+          <CardTitle>
+          Papers
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+        <Papers />
         </CardContent>
         </Card>
       </div>

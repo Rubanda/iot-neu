@@ -128,9 +128,9 @@ export const navItems: NavItem[] = [
     label: "profile",
   },
   {
-    title: "Settings",
-    href: "/dash/settings",
-    icon: "settings",
-    label: "settings",
+    title: "Help",
+    href: "https://iot.neu.edu.tr/",
+    icon: "info",
+    label: "help",
   }
 ];

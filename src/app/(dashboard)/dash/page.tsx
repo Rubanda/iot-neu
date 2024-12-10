@@ -9,15 +9,21 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getCurrentUser } from "@/lib/session";
+import Image from "next/image";
 
 export default async function page() {
   const session = await getCurrentUser();
   return (
     <div className="container flex-1 space-y-4 p-4 pt-10">
       <div className="flex items-center justify-between space-y-2">
-        <h2 className="text-3xl font-bold tracking-tight">
+        <h2 className="text-xl font-bold tracking-tight">
           Hi {session?.name?.split(' ')[0]}, Welcome back 👋
         </h2>
+        <div className="flex flex-col">
+           <Image src='/logo/desam.svg' width={400}
+          height={400} alt='ai neu logo' /> 
+          
+        </div>
       </div>
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7">

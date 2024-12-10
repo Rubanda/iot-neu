@@ -45,8 +45,8 @@ export function RecentResults() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {mpoxData.map((data) => (
-          <TableRow key={data.name}>
+        {mpoxData.map((data, index) => (
+          <TableRow key={data.name + index}>
             <TableCell className="font-medium">{data.name}</TableCell>
             <TableCell>{data.result}</TableCell>
             <TableCell>

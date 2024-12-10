@@ -121,6 +121,12 @@ export const navItems: NavItem[] = [
     icon: "dashboard",
     label: "dashboard",
   },
+ {
+    title: "Iot Neu",
+    href: "/dash/iot",
+    icon: "media",
+    label: "iot",
+  },
   {
     title: "Profile",
     href: "/dash/profile",

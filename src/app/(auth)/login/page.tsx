@@ -6,6 +6,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { UserAuthForm } from "@/components/user-auth-form"
 import { Metadata } from "next"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Login",
@@ -29,7 +30,7 @@ export default function Page() {
       </Link>
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
-        <span className="mx-auto font-semibold text-foreground tracking-tight">NEU IOT</span>
+        <Image src='/logo/air-logo.png' width={400} height={400} alt="ai neu logo" />
           <h1 className="text-2xl font-semibold tracking-tight">
             Welcome back
           </h1>

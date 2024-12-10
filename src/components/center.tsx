@@ -10,6 +10,7 @@ import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
 import { TextShimmerDemo } from "./intro";
 import { AnimatedBeamDemo } from "./beam";
+import Image from "next/image";
 
 export function CenterContent() {
   const { theme } = useTheme();
@@ -79,8 +80,9 @@ export function CenterContent() {
           </Link>
           <Link
             rel="noreferrer"
-            href={"#"}
+            href="https://github.com/Rubanda/iot-neu"
             className={cn(buttonVariants({ variant: "outline" }))}
+            target="_blank"
           >
             <Icons.gitHub className="mr-2 h-4 w-4" />
             GitHub
@@ -100,7 +102,8 @@ export function CenterContent() {
             Powered by
           </h2>
           <Link href="https://iot.neu.edu.tr/" className="text-zinc-500 text-center text-sm font-semibold uppercaser">
-            <span>https://iot.neu.edu.tr/</span>
+          <Image src='/logo/desam.svg' width={400}
+          height={400} alt='ai neu logo' /> 
           </Link>
         </div>
         <SiteFooter />

@@ -62,7 +62,7 @@ export default function Header() {
             </Link>
       
             <Link
-              href={"#"}
+              href="https://github.com/Rubanda/iot-neu"
               className={cn(
                 "hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block"
               )}

@@ -25,13 +25,16 @@ import { catchError, cn } from "@/lib/utils";
 import { Icons } from "../icons";
 import { createprofile } from "@/app/_action/profile";
 
-const AddProfile = () => {
+interface EditProps{
+  open: boolean;
+  setOpen: (open: boolean)=> void;
+}
+const EditProfile = ({open, setOpen}: EditProps) => {
   const form = useForm<z.infer<typeof profileSchema>>({
     resolver: zodResolver(profileSchema),
   });
 
   const [isSaving, setIsSaving] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
   const [isPending, startTransition] = React.useTransition();
 
     // const { data: branch, isLoading: branchLoading } = getprofile();
@@ -46,7 +49,7 @@ const AddProfile = () => {
 
         form.reset();
         toast.success("profile added successfully.");
-        setOpen(!open);
+        setOpen(false);
       } catch (err) {
         catchError(err);
       }
@@ -55,7 +58,7 @@ const AddProfile = () => {
 
   return (
     <>
-      <Dialog open={open} onOpenChange={() => setOpen(!open)}>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <Button
             className={cn(
@@ -69,15 +72,15 @@ const AddProfile = () => {
           >
             {" "}
             <Icons.add className="h-4 w-4" />
-            create profile
+            Edit profile
           </Button>
         </DialogTrigger>
         <DialogContent className=" mx-auto rounded-xl max-w-[90%] md:max-w-[500px]  overflow-y-auto bg-background">
           <DialogHeader>
-            <DialogTitle>Add profile</DialogTitle>
+            <DialogTitle>Add Departmen & Studend Id</DialogTitle>
           </DialogHeader>
           <DialogDescription className="text-foreground">
-            Add any profile You have.
+            Add Department.
           </DialogDescription>
             <Form {...form}>
               <form
@@ -125,4 +128,4 @@ const AddProfile = () => {
   );
 };
 
-export { AddProfile };
+export { EditProfile };

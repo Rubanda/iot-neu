@@ -17,8 +17,6 @@ export default async function AccountPage() {
             id: session?.id
         },
         include: {
-            Post: true,
-            Social: true,
             Profile: true,
         },
     });
@@ -54,11 +52,14 @@ export default async function AccountPage() {
                     <User user={user} />
                     <hr />
                     <div className="grid grid-cols-1 sm:grid-cols-2 mt-4">
-                        <Profile profile={userInfo} username={username} />
+                        <Profile
+                            profile={userInfo}
+                            username={username}
+                        />
                         <div className="">
                             <div className='flex flex-col gap-3 p-3 text-foreground rounded-xl  bg-gray-50 dark:bg-gray-800'>
-                                <Icons.map className='w-4 h-4' />
-                                <div className='flex items-center '><Icons.contact className='mr-2' />
+                                <div className='flex items-center '>
+                                    <Icons.contact className='mr-2' />
                                     Member since {" "}
                                     {userInfo?.createdAt ? new Date(userInfo?.createdAt).toLocaleDateString(
                                         undefined, { month: 'long', day: 'numeric', year: 'numeric' }

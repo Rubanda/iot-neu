@@ -50,32 +50,75 @@ model User {
   emailVerified DateTime?
   username      String?   @unique
   image         String?
+  age           Int?
+  gender        Gender? 
+  location      String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
   accounts  Account[]
   sessions  Session[]
-  Post      Post[]
   Profile   Profile?
-  Social    Social[]
-  SkinResult     SkinResult[]
-  UserEvent UserEvent[]
   Email     Email?
+  predictions Prediction[]
+  uploads     Upload[]
+  consents    Consent[]
+  healthHistory HealthHistory?
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  content   String?
-  published Boolean  @default(false)
-  authorId  String
-  author    User     @relation(fields: [authorId], references: [id])
-
-  @@index([authorId])
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
 }
 
+model HealthHistory {
+  id             String    @id @default(cuid())
+  userId         String    @unique
+  user           User      @relation(fields: [userId], references: [id])
+  skinConditions Json      // Will store array as JSON
+  allergies      Json      // Will store array as JSON
+  otherDetails   String?   
+  createdAt      DateTime  @default(now())
+
+  @@index([userId])
+}
+
+model Prediction {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  uploadId       String    // Link to the related uploaded image
+  upload         Upload    @relation(fields: [uploadId], references: [id])
+  result         String    // Classification result (e.g., "monkeypox", "normal", "other rash")
+  confidence     Float     // Confidence level of the prediction
+  recommendation String?   // Recommendations for next steps
+  createdAt      DateTime  @default(now())
+
+  @@index([userId])
+  @@index([uploadId])
+}
+model Upload {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  imageUrl       String    // Path or URL to the uploaded image
+  metadata       Json?     // Metadata for the image (e.g., timestamp, resolution)
+  createdAt      DateTime  @default(now())
+  Prediction Prediction[]
+  @@index([userId])
+}
+
+model Consent {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  agreedToTerms  Boolean
+  agreedToPrivacyPolicy Boolean
+  createdAt      DateTime  @default(now())
+
+  @@index([userId])
+}
 model Profile {
   id        Int      @id @default(autoincrement())
   department    String?
@@ -87,44 +130,6 @@ model Profile {
   updatedAt DateTime @updatedAt
 }
 
-model Social {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(255)
-  condition       String   @db.VarChar(255)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String
-
-  @@index([userId])
-}
-
-model SkinResult {
-  id          Int      @id @default(autoincrement())
-  name       String   @db.VarChar(255)
-  image       String   @db.VarChar(255)
-  location    String   @db.VarChar(255)
-  description String   @db.VarChar(255)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  user        User[]
-
-  UserEvent UserEvent[]
-}
-
-model UserEvent {
-  userId  String
-  skinId Int
-  user    User   @relation(fields: [userId], references: [id])
-  event   SkinResult  @relation(fields: [skinId], references: [id])
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@id([userId, skinId])
-  @@index([userId])
-  @@index([skinId])
-}
 model Email {
   id        Int      @id @default(autoincrement())
   email     String   @db.VarChar(255)

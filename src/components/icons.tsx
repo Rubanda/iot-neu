@@ -1,7 +1,7 @@
-import { ChevronDown, Circle, Contact, CopyCheck, Info, XIcon } from "lucide-react"
-import { MailCheck } from "lucide-react"
-import { ChevronUp } from "lucide-react"
 import {
+  MailCheck,
+  ChevronDown, Circle, Contact, CopyCheck, Info, XIcon,
+  ChevronUp,
   AlertTriangle,
   ArrowRight,
   Check,
@@ -9,6 +9,7 @@ import {
   ChevronRight,
   Command,
   CreditCard,
+  SquareCheckBig,
   File,
   LayoutDashboard,
   FileText,
@@ -20,7 +21,6 @@ import {
   MapPin,
   Moon,
   MoreVertical,
-  Pizza,
   Plus,
   Settings,
   SunMedium,
@@ -28,21 +28,28 @@ import {
   User,
   Book,
   X,
-  AlignJustify,
   ThermometerSun,
   Send,
   Camera,
+  PenIcon,
+  ActivityIcon,
+  MicroscopeIcon,
   type Icon as LucideIcon,
+  ShipWheelIcon,
 } from "lucide-react"
 
 export type Icon = typeof LucideIcon
 
 export const Icons = {
+  microscope: MicroscopeIcon,
+  activity: ActivityIcon,
   logo: Command,
   close: X,
   spinner: Loader2,
+  squarecheck: SquareCheckBig,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
+  shipwheel: ShipWheelIcon,
   chevronUp: ChevronUp,
   chevronDown: ChevronDown,
   trash: Trash,
@@ -60,18 +67,17 @@ export const Icons = {
   arrowRight: ArrowRight,
   help: HelpCircle,
   book: Book,
-  pizza: Pizza,
+  pen: PenIcon,
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
   temperature: ThermometerSun,
   email: MailCheck,
-  menu: AlignJustify,
   copy: CopyCheck,
   info: Info,
   contact: Contact,
-  circle:Circle,
-  send:Send,
+  circle: Circle,
+  send: Send,
   camera: Camera,
   google: ({ ...props }: LucideProps) => (
     <svg width="50px"
@@ -142,7 +148,7 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  
+
   x: XIcon,
   check: Check,
 }

@@ -122,19 +122,38 @@ export const navItems: NavItem[] = [
     label: "dashboard",
   },
  {
-    title: "Iot Neu",
-    href: "/dash/iot",
-    icon: "media",
-    label: "iot",
+    title: "My Results",
+    href: "/dash/results",
+    icon: "squarecheck",
+    label: "Result",
   },
+   {
+    title: "Health History",
+    href: "/dash/health",
+    icon: "activity",
+    label: "Result",
+  },
+{
+    title: "Educational",
+    href: "/dash/educational",
+    icon: "microscope",
+    label: "Educational",
+  },
+
   {
     title: "Profile",
     href: "/dash/profile",
     icon: "user",
     label: "profile",
   },
+{
+    title: "Thank You",
+    href: "/dash/contributors",
+    icon: "shipwheel",
+    label: "profile",
+  },
   {
-    title: "Help",
+    title: "Help & Support",
     href: "https://iot.neu.edu.tr/",
     icon: "info",
     label: "help",

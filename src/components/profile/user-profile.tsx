@@ -1,21 +1,26 @@
 'use client'
-import React, { useState, useEffect } from 'react'
-import { Skeleton } from '../ui/skeleton'
-import Link from 'next/link'
-import { Icons } from '../icons'
-import { CopyToClipboard } from '../copy-user-url'
-import { AddSocial } from './add-social'
-import { Button } from '../ui/button'
-import { AddProfile } from './add-profile'
+import React, { useState, useEffect } from 'react';
+import { Icons } from '../icons';
+import { Button } from '../ui/button';
+import { EditProfile } from './edit-profile';
 interface ProfileProps {
   profile: any
   username: string | null | undefined
 }
 export const Profile = ({ profile, username }: ProfileProps) => {
+  const [edit, setEdit] = useState(false)
+  const handleOpenEdit = ()=>{
+    setEdit(true)
+  }
   console.log(profile)
   return (
     <div className="flex flex-col gap-3">
-      <h4 className='text-xl font-bold'>Department</h4>
+      <div className='flex items-center justify-start gap-6' >
+        <h4 className='text-xl font-bold'>Department</h4>
+        <Button variant='ghost' onClick={handleOpenEdit} >
+          <Icons.pen className='h-4 w-4' />
+        </Button>
+      </div>
 
       {profile?.Profile?.department ?
         <p className='text-muted-foreground'>{profile?.Profile?.department}</p>
@@ -34,9 +39,8 @@ export const Profile = ({ profile, username }: ProfileProps) => {
         )
 
       }
-      <div className="flex items-center justify-between">
-        {/* <AddProfile /> */}
-      </div>
+      {edit && <EditProfile open={edit} setOpen={setEdit} />}
+
     </div>
   )
 }

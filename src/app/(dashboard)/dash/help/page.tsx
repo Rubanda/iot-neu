@@ -3,7 +3,6 @@ import {PageHeader, PageHeaderDescription, PageHeaderHeading} from "@/components
 import {Shell} from "@/components/shell/shell";
 import {Separator} from "@/components/ui/separator";
 import {getCurrentUser} from "@/lib/session";
-import {db} from "@/lib/db";
 import {authOptions} from "@/lib/auth";
 import BreadCrumb from "@/components/bread-crump";
 
@@ -17,16 +16,6 @@ export default async function SettingsPage() {
   if (!user) {
     redirect(authOptions?.pages?.signIn || "/login")
   }
-  const userData = await db.user.findUnique({
-    where: {
-      id: user?.id,
-    },
-    include: {
-      Profile: true,
-      Social: true
-    },
-  });
-
   return (
 
 

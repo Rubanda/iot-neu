@@ -26,7 +26,7 @@ export function SheetDemo({ items }: MobileNavProps) {
   return (
     <Sheet>
       <SheetTrigger asChild className="md:hidden">
-        <span className="flex cursor-pointer md:hidden" arial-label="logo on phone">  <Icons.menu /></span>
+        <span className="flex cursor-pointer md:hidden" arial-label="logo on phone">  <Icons.media /></span>
       </SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>

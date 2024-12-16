@@ -2,23 +2,22 @@ import { db } from "@/lib/db"
 import { getCurrentUser } from "@/lib/session"
 import { revalidatePath } from "next/cache"
 
-
-export async function findManySocial(filters: Record<string, any> = {}) {
+export async function findManyHealth(filters: Record<string, any> = {}) {
   const session = await getCurrentUser();
   console.log("[k:session]", session);
 
   if (!session) {
     throw new Error("User not authenticated.");
   }
-
-  const profiles = await db.healthHistory.findMany({
+  console.log({ filters })
+  const healthHistory = await db.healthHistory.findMany({
     where: {
-      ...filters,
-      userId: session.id, // Ensure only the current user's data is retrieved
+      userId: session.id,
+      ...filters, // Additional filters if needed
     },
   });
-
-  return profiles;
+  console.log('[user]---------------->', healthHistory)
+  return healthHistory;
 }
 
 
@@ -47,19 +46,18 @@ export async function findOneSocial(id: string) {
 /**
  * @desc create department
  */
-export async function createprofile(payload: string) {
-    const session = await getCurrentUser()
-    console.log('[k:session]',session)
-    const data = JSON.parse(payload)
-
-    console.log('[k:data]',data)
-    const profile = await  db.profile.create({
-      data: {
-        ...data,
-        userId: session?.id,
-      },
-    })
-  revalidatePath("/dash/profile");
+export async function createSocial(payload: string) {
+  const session = await getCurrentUser()
+  console.log('[k:session]', session)
+  const data = JSON.parse(payload)
+  console.log('[k:data]', data)
+  const profile = await db.healthHistory.create({
+    data: {
+      ...data,
+      userId: session?.id,
+    },
+  })
+  revalidatePath("/dash/health");
   return profile
 }
 

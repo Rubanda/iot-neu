@@ -33,7 +33,7 @@ import { toast } from "sonner";
 import React from "react";
 import { catchError, cn } from "@/lib/utils";
 import { Icons } from "../icons";
-import { createSocial } from "@/app/_action/social";
+import { createSocial } from "@/app/_action/health";
 
 const AddSocial = () => {
   const form = useForm<z.infer<typeof socialSchema>>({

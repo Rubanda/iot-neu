@@ -5,14 +5,13 @@ import { revalidatePath } from "next/cache"
 /**
  * @desc create department
  */
-export async function createSocial(payload: string) {
+export async function createPrediction(payload: string) {
     const session = await getCurrentUser()
     console.log('[k:session]',session)
     const data = JSON.parse(payload)
-    delete data.name
-    delete data.urls
+
     console.log('[k:data]',data)
-    const profile = await  db.social.create({
+    const profile = await  db.prediction.create({
       data: {
         ...data,
         userId: session?.id,

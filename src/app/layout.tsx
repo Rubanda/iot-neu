@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from "@/components/theme-provider"
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from "@/components/ui/sonner"
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import Providers from '../components/query-provider'
 import { cn } from '@/lib/utils';
 import React from "react";
@@ -22,16 +23,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning 
+    <html lang="en" suppressHydrationWarning
       className={cn(inter.className, "h-full")}
     >
       <body className={cn(
-          "overflow-hidden h-full bg-background "
-        )}>
+        "overflow-hidden h-full bg-background "
+      )}>
 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Providers >
+            <NuqsAdapter>
             {children}
+            </NuqsAdapter>
           </Providers>
 
           <TailwindIndicator />

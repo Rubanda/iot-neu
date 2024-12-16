@@ -63,7 +63,7 @@ model User {
   predictions Prediction[]
   uploads     Upload[]
   consents    Consent[]
-  healthHistory HealthHistory?
+  healthHistory HealthHistory[]
 }
 
 enum Gender {
@@ -74,10 +74,10 @@ enum Gender {
 
 model HealthHistory {
   id             String    @id @default(cuid())
-  userId         String    @unique
+  userId         String  
   user           User      @relation(fields: [userId], references: [id])
-  skinConditions Json      // Will store array as JSON
-  allergies      Json      // Will store array as JSON
+  skinConditions Json?      // Will store array as JSON
+  allergies      Json?      // Will store array as JSON
   otherDetails   String?   
   createdAt      DateTime  @default(now())
 

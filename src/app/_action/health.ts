@@ -47,15 +47,15 @@ export async function findOneSocial(id: string) {
 /**
  * @desc create department
  */
-export async function createHealth(payload: string) {
+export async function createHealth(payload: any) {
   console.log('[k:payload]', payload)
   const session = await getCurrentUser()
   console.log('[k:session]', session)
-  const data = JSON.parse(payload)
-  console.log('[k:data]', data)
+  // const data = JSON.parse(payload)
+  console.log('[k:data]', payload)
   const profile = await db.healthHistory.create({
     data: {
-      ...data,
+      ...payload,
       userId: session?.id,
     },
   })

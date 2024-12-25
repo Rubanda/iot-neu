@@ -60,14 +60,14 @@ export default function HealthTableShell({
             {
                 accessorKey: "allergies",
                 cell: ({ row }) => {
-                    const skinConditions = row.original.allergies?.toString().split(',')
+                    const skinConditions = row.original.allergies as { id:string, text: string }[]
                     console.log(skinConditions)
                     return (
                         <div className='flex gap-2' >
                             {
                                 skinConditions?.map((allergy, i) => 
                                      (
-                                        <Badge key={allergy + i}>{allergy}</Badge>)
+                                        <Badge key={allergy?.id + i}>{allergy?.text}</Badge>)
                                 )
                             }
                         </div>)

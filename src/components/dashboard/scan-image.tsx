@@ -91,23 +91,23 @@ export function CheckSkinCondition() {
         setRes(data.data);
         setLoading(false)
     };
-    console.log('data', {res})
+    console.log('data', { res })
     const final: { name: string; icon: string } = label_map.find(
         (lab: any) => lab.name === res?.result
-    ) ?? {name: 'Monkeypox', icon: '😤'};
+    ) ?? { name: 'Monkeypox', icon: '😤' };
     return (
         <Dialog>
             <DialogTrigger asChild>
                 <Button variant="outline">Test</Button>
             </DialogTrigger>
-            <DialogContent className="max-w-[800px] mx-auto">
+            <DialogContent className="max-w-[800px] mx-auto max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                     <DialogTitle>Test Your Skin</DialogTitle>
                     <DialogDescription>
                         Check your <span className='text-violet-600'>skin </span>condition.
                     </DialogDescription>
                 </DialogHeader>
-                <div className='flex w-full flex-1 flex-col items-center justify-center px-2 '>
+                <div className='flex flex-1 flex-col items-center justify-center px-2 '>
                     <div className='mt-6 grid grid-cols-1 md:grid-cols-3  flex-1 flex-wrap gap-4 '>
                         <div className='col-span-2'>
                             {screenShot ? (
@@ -118,7 +118,7 @@ export function CheckSkinCondition() {
                                     src={screenShot ?? '/skin.jpg'}
                                     className={` ${screenShot
                                         ? 'h-72 w-96 rounded-xl'
-                                        : 'border border-slate-300 bg-gray-100 rounded-2xl h-full w-96'
+                                        : ' rounded-2xl h-full w-96'
                                         } `}
                                 />
                             ) : (
@@ -129,36 +129,42 @@ export function CheckSkinCondition() {
                                     src={createObjectURL ?? '/skin.jpg'}
                                     className={` ${createObjectURL
                                         ? 'h-72 w-96 rounded-xl'
-                                        : 'border border-slate-300 bg-gray-100 rounded-2xl h-72 w-96'
+                                        : ' rounded-2xl h-72 w-96'
                                         } `}
                                 />
                             )}
                         </div>
-                        <form className='flex flex-col gap-3 items-center justify-center'>
-                            <div className='flex items-center justify-center w-full'>
+                        <form className='flex flex-col gap-3 items-start justify-start'>
+                            <div className='flex '>
                                 {!showCamera ?
-                                    <label className='w-full flex justify-center gap-3 items-center px-1 py-1 bg-white text-blue tracking-wide uppercase border border-blue cursor-pointer hover:text-violet-600'>
-                                        <svg
-                                            className='w-3 h-3'
-                                            fill='currentColor'
-                                            xmlns='http://www.w3.org/2000/svg'
-                                            viewBox='0 0 20 20'
-                                        >
-                                            <path d='M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z' />
-                                        </svg>
-                                        <span className=''>upload</span>
-                                        <Input
-                                            className='hidden'
-                                            id='default_size'
-                                            type='file'
-                                            onChange={uploadToClient}
-                                        />
+                                    <>
+                                        <label className=' flex  gap-3 items-center px-1 py-1 text-blue rounded-md tracking-wide uppercase border border-blue cursor-pointer hover:text-violet-600'>
+                                            <p className='flex items-center gap-2'>
+                                                <svg
+                                                    className='w-3 h-3'
+                                                    fill='currentColor'
+                                                    xmlns='http://www.w3.org/2000/svg'
+                                                    viewBox='0 0 20 20'
+                                                >
+                                                    <path d='M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z' />
+                                                </svg>
+                                                <span className=''>upload</span>
+                                            </p>
+                                            <Input
+                                                className='hidden'
+                                                id='default_size'
+                                                type='file'
+                                                onChange={uploadToClient}
+                                            />
+
+                                        </label>
                                         <Button
+                                        variant='outline'
                                             onClick={uploadImage}
+                                            className='ml-2'
                                         >
                                             <Icons.send className='h-4 w-4' />
-                                        </Button>
-                                    </label> : null
+                                        </Button></> : null
                                 }
                             </div>
                             <div className='flex items-center gap-2'>
@@ -173,7 +179,7 @@ export function CheckSkinCondition() {
                                 </Button>
                                 <Button
                                     className=''
-                                    variant='ghost'
+                                    variant='outline'
                                     onClick={sendToBackend}
                                 >
                                     <Icons.send className='h-4 w-4' />
@@ -204,7 +210,7 @@ export function CheckSkinCondition() {
                                     videoConstraints={videoConstraints}
                                 />
                                 <Button
-
+                                    variant='outline'
                                     onClick={capture}
                                 >
                                     Capture photo
@@ -223,7 +229,7 @@ export function CheckSkinCondition() {
                     )}
 
                 </div>
-                <Card className='w-full flex flex-col justify-center items-center mt-9 mb-4 p-6 bg-white border border-gray-200 rounded-lg shadow-md'>
+                <Card className='w-full flex flex-col justify-center items-center mt-9 mb-4 p-4 rounded-lg shadow-md'>
                     <CardHeader>
                         <CardTitle>
                             Result
@@ -232,9 +238,9 @@ export function CheckSkinCondition() {
                     <CardContent>
                         {final ? (
                             <>
-                                <span className='text-3xl'>{final?.icon}</span>
+                                <span className='text-xl'>{final?.icon}</span>
                                 <a href='#'>
-                                    <h5 className='mb-2 text-2xl font-semibold tracking-tight text-gray-900'>
+                                    <h5 className='mb-2 text-2xl font-semibold tracking-tight'>
                                         {final?.name}
                                     </h5>
                                 </a>

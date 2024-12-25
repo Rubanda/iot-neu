@@ -3,7 +3,12 @@ import { prettify } from "./member";
 
 export const healthSchema = z.object({
     skinConditions: z.string(),
-    allergies: z.string().optional(),
+    allergies: z.array( 
+        z.object({
+            id: z.string(),
+            text: z.string(),
+        }),
+    ),
     otherDetails: z.string().optional(),
 });
 

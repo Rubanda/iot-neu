@@ -1,3 +1,4 @@
+'use server'
 import { db } from "@/lib/db"
 import { getCurrentUser } from "@/lib/session"
 import { revalidatePath } from "next/cache"
@@ -47,45 +48,52 @@ export async function findOneSocial(id: string) {
 /**
  * @desc create department
  */
-export async function createprofile(payload: string) {
-    const session = await getCurrentUser()
-    console.log('[k:session]',session)
-    const data = JSON.parse(payload)
-
-    console.log('[k:data]',data)
-    const profile = await  db.profile.create({
-      data: {
-        ...data,
-        userId: session?.id,
-      },
-    })
+export async function createprofile(payload: any, userId: any) {
+  const profile = await db.profile.create({
+    data: {
+      ...payload,
+      userId: userId,
+    },
+  })
   revalidatePath("/dash/profile");
   return profile
 }
 
-export async function updateSocial(id: string, payload: string) {
+export async function updatedProfile(id: number, payload: any) {
   const session = await getCurrentUser();
-  console.log("[k:session]", session);
-
+  console.log("[k:session]", { id, payload });
+  if (id === null || id === undefined) {
+    return await createprofile(payload, session?.id);
+  }
   if (!session) {
     throw new Error("User not authenticated.");
   }
-
-  const data = JSON.parse(payload);
-  console.log("[k:data]", data);
-
-  const updatedProfile = await db.healthHistory.update({
+  console.log('[payload]')
+  const existingProfile = await db.profile.findUnique({
     where: {
       id: id,
     },
-    data: {
-      ...data,
-      userId: session.id,
-    },
   });
-
-  revalidatePath("/dash/health");
-  return updatedProfile;
+  console.log("[k:existingProfile]", { existingProfile });
+  if (!existingProfile) {
+    // Create a new profile if it doesn't exist
+    const newProfile = await createprofile(payload, session.id,);
+    return newProfile;
+  } else {
+    console.log('[k:payload]', payload)
+    // Update the existing profile
+    const updatedProfile = await db.profile.update({
+      where: {
+        id: id,
+      },
+      data: {
+        ...payload,
+        userId: session.id,
+      },
+    });
+    revalidatePath("/dash/profile");
+    return updatedProfile;
+  }
 }
 
 export async function deleteSocial(id: string) {

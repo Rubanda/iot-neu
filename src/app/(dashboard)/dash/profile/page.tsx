@@ -6,7 +6,6 @@ import { User } from '@/components/profile/user';
 import { Profile } from '@/components/profile/user-profile';
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header';
 import BreadCrumb from '@/components/bread-crump';
-import Social from '@/components/profile/social';
 import { Icons } from '@/components/icons';
 
 export default async function AccountPage() {

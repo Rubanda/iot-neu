@@ -1,3 +1,4 @@
+'use server'
 import { db } from "@/lib/db"
 import { getCurrentUser } from "@/lib/session"
 import { revalidatePath } from "next/cache"
@@ -46,14 +47,15 @@ export async function findOneSocial(id: string) {
 /**
  * @desc create department
  */
-export async function createSocial(payload: string) {
+export async function createHealth(payload: any) {
+  console.log('[k:payload]', payload)
   const session = await getCurrentUser()
   console.log('[k:session]', session)
-  const data = JSON.parse(payload)
-  console.log('[k:data]', data)
+  // const data = JSON.parse(payload)
+  console.log('[k:data]', payload)
   const profile = await db.healthHistory.create({
     data: {
-      ...data,
+      ...payload,
       userId: session?.id,
     },
   })
@@ -61,7 +63,7 @@ export async function createSocial(payload: string) {
   return profile
 }
 
-export async function updateSocial(id: string, payload: string) {
+export async function updateHealth(id: string, payload: string) {
   const session = await getCurrentUser();
   console.log("[k:session]", session);
 

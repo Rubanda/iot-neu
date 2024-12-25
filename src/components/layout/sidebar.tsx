@@ -133,7 +133,6 @@ const FooterSection = ({
 
 export default function Sidebar({ className }: SidebarProps) {
   const {data: session} = useSession();
-  console.log(session)
   const { theme = "light", setTheme } = useTheme(); // Default to 'light' if theme is undefined
   const [logo, setLogo] = useState("/iot-logo.svg");
   const [isCollapsed, setIsCollapsed] = useState(false);

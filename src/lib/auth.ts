@@ -76,7 +76,7 @@ export const authOptions: NextAuthOptions = {
       }
     },
     redirect() {
-      return '/'
+      return '/dash'
     },
   },
 }

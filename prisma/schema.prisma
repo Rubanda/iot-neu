@@ -78,7 +78,7 @@ model HealthHistory {
   user           User      @relation(fields: [userId], references: [id])
   skinConditions Json?      // Will store array as JSON
   allergies      Json?      // Will store array as JSON
-  otherDetails   String?   
+  otherDetails   String?  @db.VarChar(455)
   createdAt      DateTime  @default(now())
 
   @@index([userId])

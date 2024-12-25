@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import React, { Suspense } from 'react'
 import { HealthInfoCards } from './health-cardinfo'
 import { getCurrentUser } from '@/lib/session'
+import { AddHealth } from '@/components/health/new-health'
 const data = [{
 
 }]
@@ -34,10 +35,7 @@ export default async function Page() {
                              Health report for {user?.name}
                         </PageHeaderDescription>
                     </PageHeader>
-                    <Button >
-                        <Icons.add />
-                        new
-                    </Button>
+                   <AddHealth /> 
                 </div>
                 <Suspense fallback={
                     <DataTableSkeleton

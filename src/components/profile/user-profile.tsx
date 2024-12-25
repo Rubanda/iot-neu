@@ -9,19 +9,26 @@ interface ProfileProps {
 }
 export const Profile = ({ profile, username }: ProfileProps) => {
   const [edit, setEdit] = useState(false)
-  const handleOpenEdit = ()=>{
+  const handleOpenEdit = () => {
     setEdit(true)
   }
-  console.log(profile)
+  console.log('profile::get', profile)
   return (
     <div className="flex flex-col gap-3">
       <div className='flex items-center justify-start gap-6' >
-        <h4 className='text-xl font-bold'>Department</h4>
-        <Button variant='ghost' onClick={handleOpenEdit} >
-          <Icons.pen className='h-4 w-4' />
+        <Button variant='outline' onClick={handleOpenEdit} className='flex items-center' >
+          <Icons.add className='h-4 w-4' /> add profile
         </Button>
       </div>
+      <h4 className='text-xl font-bold'>University</h4>
+      {profile?.Profile?.university ?
+        <p className='text-muted-foreground'>{profile?.Profile?.university}</p>
+        : (
+          <p className='text-muted-foreground'>No university added yet</p>
+        )
 
+      }
+      <h4 className='text-xl font-bold'>Department</h4>
       {profile?.Profile?.department ?
         <p className='text-muted-foreground'>{profile?.Profile?.department}</p>
 
@@ -39,7 +46,7 @@ export const Profile = ({ profile, username }: ProfileProps) => {
         )
 
       }
-      {edit && <EditProfile open={edit} setOpen={setEdit} />}
+      {edit && <EditProfile profile={profile?.Profile} open={edit} setOpen={setEdit} />}
 
     </div>
   )

@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import { Icons } from '../icons'
-import { EditUser } from './edit-user'
 
 type Props = {
   user: any

@@ -23,15 +23,23 @@ import { toast } from "sonner";
 import React from "react";
 import { catchError, cn } from "@/lib/utils";
 import { Icons } from "../icons";
-import { createprofile } from "@/app/_action/profile";
+import { createprofile, updatedProfile } from "@/app/_action/profile";
 
 interface EditProps{
+  profile: any;
   open: boolean;
   setOpen: (open: boolean)=> void;
 }
-const EditProfile = ({open, setOpen}: EditProps) => {
+const EditProfile = ({profile, open, setOpen}: EditProps) => {
+  const profileInfo = {
+    department: profile?.department,
+    university: profile?.university,
+    studentId: profile?.studentId,
+  }
   const form = useForm<z.infer<typeof profileSchema>>({
     resolver: zodResolver(profileSchema),
+    values: profileInfo,
+    mode: 'onChange'
   });
 
   const [isSaving, setIsSaving] = React.useState(false);
@@ -39,13 +47,10 @@ const EditProfile = ({open, setOpen}: EditProps) => {
 
     // const { data: branch, isLoading: branchLoading } = getprofile();
   function onSubmit(data: z.infer<typeof profileSchema>) {
-    const payload = JSON.stringify({
-      ...data
-    });
-    console.log(payload);
+    console.log('data:get',[data]);
     startTransition(async () => {
       try {
-        await createprofile(payload);
+        await updatedProfile(profile?.id, data);
 
         form.reset();
         toast.success("profile added successfully.");
@@ -77,11 +82,8 @@ const EditProfile = ({open, setOpen}: EditProps) => {
         </DialogTrigger>
         <DialogContent className=" mx-auto rounded-xl max-w-[90%] md:max-w-[500px]  overflow-y-auto bg-background">
           <DialogHeader>
-            <DialogTitle>Add Departmen & Studend Id</DialogTitle>
+            <DialogTitle>Add Student info</DialogTitle>
           </DialogHeader>
-          <DialogDescription className="text-foreground">
-            Add Department.
-          </DialogDescription>
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -90,20 +92,30 @@ const EditProfile = ({open, setOpen}: EditProps) => {
                 <div className=" flex flex-col gap-3 border-none ">
                   <FormField
                     control={form.control}
-                    name="bio"
+                    name="department"
                     render={({ field }) => (
                       <FormItem className="flex flex-col">
-                        <FormLabel>Bio</FormLabel>
+                        <FormLabel>Department</FormLabel>
                         <Input id="bio" className="col-span-3" {...field} />
                       </FormItem>
                     )}
                   />
                    <FormField
                     control={form.control}
-                    name="skills"
+                    name="university"
                     render={({ field }) => (
                       <FormItem className="flex flex-col">
-                        <FormLabel>Talent</FormLabel>
+                        <FormLabel>University</FormLabel>
+                        <Input id="university" className="col-span-3" {...field} />
+                      </FormItem>
+                    )}
+                  />
+                        <FormField
+                    control={form.control}
+                    name="studentId"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-col">
+                        <FormLabel>Student Id</FormLabel>
                         <Input id="url" className="col-span-3" {...field} />
                       </FormItem>
                     )}

@@ -47,7 +47,7 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className="hidden sm:block flex justify-center">
+        <div className="hidden sm:block md:flex justify-center">
           <nav className="flex items-center space-x-6 text-sm font-medium">
             <Link
               href="/dash"

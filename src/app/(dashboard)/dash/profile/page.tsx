@@ -6,7 +6,6 @@ import { User } from '@/components/profile/user';
 import { Profile } from '@/components/profile/user-profile';
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header';
 import BreadCrumb from '@/components/bread-crump';
-import Social from '@/components/profile/social';
 import { Icons } from '@/components/icons';
 
 export default async function AccountPage() {
@@ -25,12 +24,9 @@ export default async function AccountPage() {
     const username = user?.username
 
     return (
-        <Shell variant="sidebar" className="flex-1 space-y-4  p-4 pt-6 md:p-8">
-            <div className="xxs:flex-row flex flex-col gap-4 pr-1">
+        <Shell variant="sidebar" className="flex-1 space-y-4 py-16 p-4 pt-6 md:p-8">
                 <BreadCrumb items={[{ link: "/dash/profile", title: "Profile" }]} />
 
-            </div>
-            <Shell className="max-w-5xl mx-auto flex-1 space-y-4  p-4 pt-6 md:p-8">
                 <PageHeader
                     id="dashboard-department-page-header"
                     aria-labelledby="dashboard-department-page-header-heading"
@@ -70,6 +66,5 @@ export default async function AccountPage() {
                     </div>
                 </section>
             </Shell>
-        </Shell>
     )
 }

@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/env.js"  ],
+, "src/env.js", "prisma/seed.js"  ],
   "exclude": [
     "node_modules"
   ]

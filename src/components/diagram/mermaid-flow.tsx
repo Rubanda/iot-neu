@@ -15,4 +15,3 @@ export default function MermaidDiagram({ chart }: MermaidDiagramProps) {
 
   return <div className="mermaid">{chart}</div>
 }
-

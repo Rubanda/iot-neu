@@ -21,6 +21,7 @@ import { z } from 'zod';
 import { catchError } from '@/lib/utils';
 import { createPrediction } from '@/app/_action/prediction';
 import { UploadButton } from "@/utils/uploadthing";
+import { Alert, AlertTitle } from '../ui/alert';
 const videoConstraints = {
     width: 1280,
     height: 720,
@@ -99,6 +100,11 @@ export function CheckSkinCondition() {
                     <DialogDescription>
                         Check your <span className='text-violet-600'>skin </span>condition.
                     </DialogDescription>
+                    <Alert variant="default" className='bg-muted'>
+                        <AlertTitle>
+                            only Skin Image
+                        </AlertTitle>
+                    </Alert>
                 </DialogHeader>
                 <div className='flex flex-1 flex-col items-center justify-center px-2 '>
                     <div className='mt-6 grid grid-cols-1 md:grid-cols-3  flex-1 flex-wrap gap-4 '>

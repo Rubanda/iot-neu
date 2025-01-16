@@ -1,3 +1,4 @@
+import { findResults } from "@/app/_action/prediction";
 import { AIChat } from "@/components/ai/ai-chat";
 import { Papers } from "@/components/dashboard/papers";
 import { RecentResults } from "@/components/dashboard/recent-results";
@@ -14,6 +15,7 @@ import Image from "next/image";
 
 export default async function page() {
   const session = await getCurrentUser();
+  const prediction = await findResults({sort: {createdAt: 'desc'}});
   return (
     <div className="container flex-1 space-y-4 p-4 pt-10">
       <div className="flex items-center justify-between space-y-2">
@@ -28,7 +30,7 @@ export default async function page() {
       </div>
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-7">
-        <div className="col-span-3">
+        <div className="col-span-3 flex flex-col space-y-4">
           <Card className="">
             <CardHeader>
               <CardTitle>Check your Skin Condition</CardTitle>
@@ -40,14 +42,9 @@ export default async function page() {
           <Card className="flex-1 max-h-full">
             <CardHeader>
               <CardTitle>Recent Result</CardTitle>
-              <CardDescription>
-                see a doctor
-              </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground">
-                We advise you to see a doctor
-              </p>
+             {prediction ? <RecentResults data={prediction[0]} /> : 'No recent result'}
             </CardContent>
           </Card>
         </div>
@@ -56,16 +53,6 @@ export default async function page() {
         </div>
       </div>
       <div className="grid gap-4 grid-cols-1 ">
-        <Card className="">
-          <CardHeader>
-            <CardTitle>
-              Previous Test
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <RecentResults />
-          </CardContent>
-        </Card>
         <Card className="">
           <CardHeader>
             <CardTitle>

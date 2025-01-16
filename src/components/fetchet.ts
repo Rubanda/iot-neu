@@ -3,9 +3,9 @@ export type QueryResponse = { data: any }
 
 
 export const poster = async (url: string, payload?: unknown): Promise<QueryResponse> => {
-  console.log('url', url)
+  const path = `http://10.80.2.192:8000/${url}`
   try {
-    const response = axios.post(url, payload)
+    const response = axios.post(path, payload)
     const data = await response
     return data
   } catch (error: any) {

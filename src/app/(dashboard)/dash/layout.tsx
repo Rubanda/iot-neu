@@ -32,7 +32,7 @@ export default async function DashboardLayout({
         <main className="flex-1 overflow-x-hidden min-h-screen pl-1">
           {children}
           <footer className="flex items-center justify-center py-16 h-16 bg-background text-foreground">
-            <p>© 2024 Neu IOT</p>
+            <p>© 2025 Neu IOT</p>
           </footer>
           <Toaster richColors />
         </main>

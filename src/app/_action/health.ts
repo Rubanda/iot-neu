@@ -5,26 +5,22 @@ import { revalidatePath } from "next/cache"
 
 export async function findManyHealth(filters: Record<string, any> = {}) {
   const session = await getCurrentUser();
-  console.log("[k:session]", session);
 
   if (!session) {
     throw new Error("User not authenticated.");
   }
-  console.log({ filters })
   const healthHistory = await db.healthHistory.findMany({
     where: {
       userId: session.id,
       ...filters, // Additional filters if needed
     },
   });
-  console.log('[user]---------------->', healthHistory)
   return healthHistory;
 }
 
 
 export async function findOneSocial(id: string) {
   const session = await getCurrentUser();
-  console.log("[k:session]", session);
 
   if (!session) {
     throw new Error("User not authenticated.");
@@ -48,11 +44,7 @@ export async function findOneSocial(id: string) {
  * @desc create department
  */
 export async function createHealth(payload: any) {
-  console.log('[k:payload]', payload)
   const session = await getCurrentUser()
-  console.log('[k:session]', session)
-  // const data = JSON.parse(payload)
-  console.log('[k:data]', payload)
   const profile = await db.healthHistory.create({
     data: {
       ...payload,
@@ -65,14 +57,12 @@ export async function createHealth(payload: any) {
 
 export async function updateHealth(id: string, payload: string) {
   const session = await getCurrentUser();
-  console.log("[k:session]", session);
 
   if (!session) {
     throw new Error("User not authenticated.");
   }
 
   const data = JSON.parse(payload);
-  console.log("[k:data]", data);
 
   const updatedProfile = await db.healthHistory.update({
     where: {
@@ -90,7 +80,6 @@ export async function updateHealth(id: string, payload: string) {
 
 export async function deleteSocial(id: string) {
   const session = await getCurrentUser();
-  console.log("[k:session]", session);
 
   if (!session) {
     throw new Error("User not authenticated.");

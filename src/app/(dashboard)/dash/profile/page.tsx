@@ -19,7 +19,6 @@ export default async function AccountPage() {
             Profile: true,
         },
     });
-    console.log(userInfo)
     const user = session
     const username = user?.username
 

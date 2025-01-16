@@ -15,68 +15,67 @@ import { Prisma } from '@prisma/client';
 import { DataTable } from '../data-table/data-table-initial';
 import { Badge } from '../ui/badge';
 import { truncateString } from '@/lib/utils';
-type Health = {
+import Image from 'next/image';
+type Result = {
     id: string;
     userId: string;
-    skinConditions: Prisma.JsonValue;
-    allergies: Prisma.JsonValue;
-    otherDetails: string | null;
+    result: string;
+    image: string | null;
+    confidence:     number | null;
+    recommendation: string | null;
     createdAt: Date;
 }
-interface HealthDepartmentTableProps {
-    data: Health[]
+interface ResultDepartmentTableProps {
+    data: Result[]
     pageCount: number;
 
 }
 
-export default function HealthTableShell({
+export default function ResultTableShell({
     data,
     pageCount,
 
-}: HealthDepartmentTableProps) {
-    const columns = React.useMemo<ColumnDef<Health, unknown>[]>(
+}: ResultDepartmentTableProps) {
+    const columns = React.useMemo<ColumnDef<Result, unknown>[]>(
         () => [
 
-            // {
-            //     accessorKey: "userId",
-
-            //     cell: ({ row }) => (
-            //         <p>{row.original.userId}</p>
-            //     ),
-            // },
             {
-                accessorKey: "skinConditions",
+                accessorKey: "image",
+
+                cell: ({ row }) => (
+                    <Image src={row.original?.image!} alt="test image" width={30} height={30} className="rounded-lg"/>
+                ),
+            },
+            {
+                accessorKey: "result",
                 cell: ({ row }) => {
-                    const skinConditions = row.original.skinConditions?.toString().split(',')
+                    
+                   
                     return (
                         <div className='flex gap-2 ' >
-                            {skinConditions?.map((skin, i) => (
-                                <Badge key={skin + i}>{skin}</Badge>
-                            ))}
+                           
+                                <Badge>{row.original?.result}</Badge>
+                           
                         </div>
                     )
                 }
             },
             {
-                accessorKey: "allergies",
+                accessorKey: "confidence",
                 cell: ({ row }) => {
-                    const skinConditions = row.original.allergies as { id: string, text: string }[]
                     return (
                         <div className='flex gap-2' >
-                            {
-                                skinConditions?.map((allergy, i) =>
-                                (
-                                    <Badge key={allergy?.id + i}>{allergy?.text}</Badge>)
-                                )
-                            }
+                            
+                                    <Badge >{row.original?.confidence}</Badge>
+                            
                         </div>)
 
                 }
             },
             {
-                accessorKey: "otherDetails",
+                accessorKey: "recomendation",
                 cell: ({ row }) => (
-                    <p>{truncateString(row.original?.otherDetails!, 20)}</p>
+                    <p>{row.original.recommendation ? truncateString(row.original?.recommendation, 20) : '--'}</p>
                 )
             },
             {

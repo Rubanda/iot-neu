@@ -34,11 +34,9 @@ export async function getUser() {
  */
 export async function createProfile(payload: string) {
       const session = await getCurrentUser()
-      console.log('[k:session]',session)
       const data = JSON.parse(payload)
       delete data.name
       delete data.urls
-      console.log('[k:data]',data)
       const profile = await  db.profile.update({
         where: {
           userId: session?.id,

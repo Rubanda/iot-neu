@@ -88,15 +88,13 @@ model Prediction {
   id             String    @id @default(cuid())
   userId         String
   user           User      @relation(fields: [userId], references: [id])
-  uploadId       String    // Link to the related uploaded image
-  upload         Upload    @relation(fields: [uploadId], references: [id])
+  image          String    // Path or URL to the uploaded image
   result         String    // Classification result (e.g., "monkeypox", "normal", "other rash")
-  confidence     Float     // Confidence level of the prediction
+  confidence     Float?     // Confidence level of the prediction
   recommendation String?   // Recommendations for next steps
   createdAt      DateTime  @default(now())
 
   @@index([userId])
-  @@index([uploadId])
 }
 model Upload {
   id             String    @id @default(cuid())
@@ -105,7 +103,6 @@ model Upload {
   imageUrl       String    // Path or URL to the uploaded image
   metadata       Json?     // Metadata for the image (e.g., timestamp, resolution)
   createdAt      DateTime  @default(now())
-  Prediction Prediction[]
   @@index([userId])
 }
 

@@ -78,7 +78,6 @@ const profileFormSchema = z.object({
       const payload = JSON.stringify({
         ...data,
       });
-      console.log('---->',payload)
       startTransition(async () => {
         try {
           await createProfile(payload);

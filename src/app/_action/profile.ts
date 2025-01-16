@@ -6,7 +6,6 @@ import { revalidatePath } from "next/cache"
 
 export async function findManySocial(filters: Record<string, any> = {}) {
   const session = await getCurrentUser();
-  console.log("[k:session]", session);
 
   if (!session) {
     throw new Error("User not authenticated.");
@@ -25,7 +24,6 @@ export async function findManySocial(filters: Record<string, any> = {}) {
 
 export async function findOneSocial(id: string) {
   const session = await getCurrentUser();
-  console.log("[k:session]", session);
 
   if (!session) {
     throw new Error("User not authenticated.");
@@ -61,26 +59,22 @@ export async function createprofile(payload: any, userId: any) {
 
 export async function updatedProfile(id: number, payload: any) {
   const session = await getCurrentUser();
-  console.log("[k:session]", { id, payload });
   if (id === null || id === undefined) {
     return await createprofile(payload, session?.id);
   }
   if (!session) {
     throw new Error("User not authenticated.");
   }
-  console.log('[payload]')
   const existingProfile = await db.profile.findUnique({
     where: {
       id: id,
     },
   });
-  console.log("[k:existingProfile]", { existingProfile });
   if (!existingProfile) {
     // Create a new profile if it doesn't exist
     const newProfile = await createprofile(payload, session.id,);
     return newProfile;
   } else {
-    console.log('[k:payload]', payload)
     // Update the existing profile
     const updatedProfile = await db.profile.update({
       where: {
@@ -98,7 +92,6 @@ export async function updatedProfile(id: number, payload: any) {
 
 export async function deleteSocial(id: string) {
   const session = await getCurrentUser();
-  console.log("[k:session]", session);
 
   if (!session) {
     throw new Error("User not authenticated.");

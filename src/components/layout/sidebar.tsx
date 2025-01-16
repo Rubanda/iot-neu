@@ -16,7 +16,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 interface SidebarProps {
   className?: string;
@@ -46,13 +46,12 @@ const LogoSection = ({ logo }: { logo: string }) => (
   </div>
 );
 
-const UserInfoSection = ({ isCollapsed, user }: { isCollapsed: boolean, user: any}) => (
+const UserInfoSection = ({ isCollapsed, user }: { isCollapsed: boolean, user: any }) => (
   <div className="flex justify-center items-center gap-2 py-6">
     <UserNav user={user} />
     <div
-      className={`hide-when-collapsed transition-all ${
-        isCollapsed ? "hidden" : ""
-      }`}
+      className={`hide-when-collapsed transition-all ${isCollapsed ? "hidden" : ""
+        }`}
     >
       <p className="text-sm font-medium leading-none">{user?.name}</p>
       <p className="text-xs leading-none text-muted-foreground">
@@ -132,7 +131,7 @@ const FooterSection = ({
 );
 
 export default function Sidebar({ className }: SidebarProps) {
-  const {data: session} = useSession();
+  const { data: session } = useSession();
   const { theme = "light", setTheme } = useTheme(); // Default to 'light' if theme is undefined
   const [logo, setLogo] = useState("/iot-logo.svg");
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -157,15 +156,16 @@ export default function Sidebar({ className }: SidebarProps) {
 
   return (
     <div
-      className={`p-4 sidebar flex flex-col h-full ${className} ${
-        isCollapsed ? "collapsed" : ""
-      }`}
+      className={`p-4 sidebar flex flex-col h-full ${className} ${isCollapsed ? "collapsed" : ""
+        }`}
     >
       <div className="flex h-full border-r rounded-3xl bg-muted flex-col flex-grow overflow-auto">
         <LogoSection logo={logo} />
-        <UserInfoSection isCollapsed={isCollapsed} user={session?.user}/>
+        <UserInfoSection isCollapsed={isCollapsed} user={session?.user} />
         <NavigationSection isCollapsed={isCollapsed} />
+
         <div className=" flex items-center gap-2 py-6 justify-center align-center bottom-0">
+        
           <FooterSection
             theme={theme}
             setTheme={setTheme}

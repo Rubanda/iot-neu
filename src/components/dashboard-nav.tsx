@@ -10,6 +10,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Button } from "./ui/button";
+import { signOut } from "next-auth/react";
 interface DashboardNavProps {
   items: NavItem[];
   setOpen?: Dispatch<SetStateAction<boolean>>;
@@ -58,17 +60,17 @@ export function DashboardNav({
                 {isCollapsed
                   ? null
                   : item.count && (
-                      <span className="text-element ml-auto text-xs font-semibold">
-                        {item.count}
-                      </span>
-                    )}
+                    <span className="text-element ml-auto text-xs font-semibold">
+                      {item.count}
+                    </span>
+                  )}
                 {isCollapsed
                   ? null
                   : item.tag && (
-                      <span className="text-element ml-auto bg-[#50e3c1] text-black text-xs px-2 rounded-md">
-                        {item.tag}
-                      </span>
-                    )}
+                    <span className="text-element ml-auto bg-[#50e3c1] text-black text-xs px-2 rounded-md">
+                      {item.tag}
+                    </span>
+                  )}
               </span>
             </Link>
           );
@@ -85,6 +87,11 @@ export function DashboardNav({
             ))
           );
         })}
+        <div className="flex items-center justify-start -ml-2 text-muted-foreground">
+          <Button className="flex items-start gap-2" variant="ghost" onClick={() => signOut()}>
+            <Icons.dooropen className="icon-element h-5 w-5" /><span className={`${isCollapsed ? 'hidden' : 'block'}`} >Logout</span>
+          </Button>
+        </div>
       </nav>
     </TooltipProvider>
   );

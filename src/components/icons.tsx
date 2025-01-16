@@ -36,6 +36,7 @@ import {
   Workflow,
   ActivityIcon,
   MicroscopeIcon,
+  DoorOpen,
   type Icon as LucideIcon,
   ShipWheelIcon,
 } from "lucide-react"
@@ -46,6 +47,7 @@ export const Icons = {
   microscope: MicroscopeIcon,
   activity: ActivityIcon,
   logo: Command,
+  dooropen: DoorOpen,
   close: X,
   ellipsi: EllipsisIcon,
   spinner: Loader2,

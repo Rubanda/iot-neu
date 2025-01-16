@@ -10,7 +10,6 @@ import { readStreamableValue } from "ai/rsc";
 
 export default function Page() {
     const [generation, setGeneration] = useState("");
-    console.log(generation)
     return (
         <Shell variant="sidebar" className="flex-1 space-y-6 p-4 pt-6 md:p-8">
             <EducationInfo />

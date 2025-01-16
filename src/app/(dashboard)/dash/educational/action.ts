@@ -10,6 +10,5 @@ export const streamTextAction = async () => {
     temperature: 0.5,
     prompt: "Tell me a joke.",
   });
-  console.log(result);
   return createStreamableValue(result.textStream).value;
 };

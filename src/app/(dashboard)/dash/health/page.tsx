@@ -16,10 +16,9 @@ export default async function Page() {
     const user = await getCurrentUser()
     const data = await findManyHealth()
     const pageCount = 10
-    console.log('[health]report', data)
     return (
         <Shell variant="sidebar" className="flex-1 space-y-4  p-4 pt-6 md:p-8">
-            <div className="space-y-4 overflow-auto">
+            <div className="space-y-4 overflow-auto container">
                 <div className='flex items-center justify-between'>
                     <PageHeader
                         id="dashboard-department-page-header"

@@ -8,7 +8,6 @@ const openai = createOpenAI({
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
-    console.log('[k:messages]', messages)
   const result=  streamText({
       model: openai('gpt-4o-mini'),
       system: `you are a experience doctor expert in skin 
@@ -19,7 +18,6 @@ export async function POST(req: Request) {
       ],
       temperature: 1,
   });
-  console.log('[k:response]', result.toDataStreamResponse())
   // return response.text;
   return result.toDataStreamResponse();
 }

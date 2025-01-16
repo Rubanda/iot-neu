@@ -17,7 +17,7 @@ export default async function page() {
   const session = await getCurrentUser();
   const prediction = await findResults({sort: {createdAt: 'desc'}});
   return (
-    <div className="container flex-1 space-y-4 p-4 pt-10">
+    <div className="flex-1 space-y-4 p-4 pt-10">
       <div className="flex items-center justify-between space-y-2">
         <h2 className="text-xl font-bold tracking-tight">
           Hi {session?.name?.split(' ')[0]}, Welcome back 👋

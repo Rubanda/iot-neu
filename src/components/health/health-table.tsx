@@ -126,7 +126,7 @@ export default function HealthTableShell({
     })
 
     return (
-        <DataTable className='container mx-auto'
+        <DataTable className=''
             table={table}
         >
 

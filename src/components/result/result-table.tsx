@@ -125,7 +125,7 @@ export default function ResultTableShell({
     })
 
     return (
-        <DataTable className='container mx-auto'
+        <DataTable className=''
             table={table}
         >
 

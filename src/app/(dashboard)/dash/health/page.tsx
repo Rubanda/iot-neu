@@ -17,7 +17,7 @@ export default async function Page() {
     const data = await findManyHealth()
     const pageCount = 10
     return (
-        <Shell variant="sidebar" className="flex-1 space-y-4  p-4 pt-6 md:p-8">
+        <Shell variant="sidebar" className="flex-1 space-y-4   pt-6 md:p-8">
             <div className="space-y-4 overflow-auto container">
                 <div className='flex items-center justify-between'>
                     <PageHeader
@@ -26,7 +26,7 @@ export default async function Page() {
                     >
                         <div className="flex   space-x-4">
                             <PageHeaderHeading size="sm" className="flex-1">
-                              Health data 
+                              My Health data 
                             </PageHeaderHeading>
 
                         </div>

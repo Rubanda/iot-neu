@@ -13,7 +13,7 @@ export function RecentResults({ data }: any) {
   const chartData = [
     {
       name: "Confidence",
-      value: data.confidence,
+      value: data?.confidence,
     },
   ]
 
@@ -23,27 +23,27 @@ export function RecentResults({ data }: any) {
       <div className="flex flex-col items-center gap-4">
         <Image
           className="flex-1  rounded-lg "
-          src={data.image || "/placeholder.svg"}
-          alt={data.result}
+          src={data?.image || "/placeholder.svg"}
+          alt={data?.result}
           width={100}
           height={50}
         />
 
         <Button variant="outline" size="sm" asChild>
-          <Link href="/result">View More</Link>
+          <Link href="/dash/results">View More</Link>
         </Button>
       </div>
       <div className="flex flex-col space-y-4">
         <h3 className="text-2xl font-bold">Recent Result</h3>
         <div className="flex items-center gap-2">
           <span className="text-lg">
-            {data.result === "MonkeyPox" ? "MonkeyPox" : "Health"}
+            {data?.result === "MonkeyPox" ? "MonkeyPox" : "Health"}
           </span>
           <Badge
             className="text-xs h-5 text-left"
-            variant={data.result === "MonkeyPox" ? "destructive" : "default"}
+            variant={data?.result === "MonkeyPox" ? "destructive" : "default"}
           >
-            {data.result === "MonkeyPox" ? "doctor" : "safe"}
+            {data?.result === "MonkeyPox" ? "doctor" : "safe"}
           </Badge>
         </div>
         <div className="hidden h-16 w-full md:inline-flex">
